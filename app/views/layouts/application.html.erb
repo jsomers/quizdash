@@ -1,14 +1,493 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Quizdash</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
 
-<%= yield %>
+ 
+    
+ 
+  
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+  <head> 
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"> 
+        <title>jsomers/quizdash at jugtest - GitHub</title> 
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" /> 
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub" /> 
+ 
+    <link href="https://assets1.github.com/stylesheets/bundle_common.css?37941c22e36efdbdf2599d58309d8aee5566e0d1" media="screen" rel="stylesheet" type="text/css" /> 
+<link href="https://assets0.github.com/stylesheets/bundle_github.css?37941c22e36efdbdf2599d58309d8aee5566e0d1" media="screen" rel="stylesheet" type="text/css" /> 
+ 
+    
+  
+    
+  
+ 
+  <link href="https://github.com/jsomers/quizdash/commits/jugtest.atom" rel="alternate" title="Recent Commits to quizdash:jugtest" type="application/atom+xml" /> 
+ 
+    <META NAME="ROBOTS" CONTENT="NOINDEX, FOLLOW">    <meta name="description" content="Real-time multiplayer sporcle-like quiz races" /> 
+ 
+  </head> 
+ 
+  
+ 
+  <body class="logged_in "> 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    <div class="subnavd" id="main"> 
+      <div id="header" class="true"> 
+        
+          <a class="logo boring" href="https://github.com/organizations/trustedinsight"> 
+            <img src="http://github.com/images/modules/header/logov3.png?changed" class="default" alt="github" /> 
+          </a>
+        
+        
+          
+ 
+ 
+ 
+ 
+ 
+  
+    <div class="userbox"> 
+      <div class="avatarname"> 
+        <a href="https://github.com/jsomers"><img src="https://secure.gravatar.com/avatar/4cd969f7afb5655fe00423c7ac80743f?s=140&d=https://github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" alt="" width="20" height="20"  /></a> 
+        <a href="https://github.com/jsomers" class="name">jsomers</a> 
+ 
+        
+        
+          <a href="https://github.com/inbox/notifications" class="unread_count notifications_count new tooltipped downwards js-notification-count" title="Unread Notifications">7</a> 
+        
+      </div> 
+      <ul class="usernav"> 
+        <li><a href="https://github.com/organizations/trustedinsight">Dashboard</a></li> 
+        <li> 
+          
+          <a href="https://github.com/inbox">Inbox</a> 
+          <a href="https://github.com/inbox" class="unread_count ">0</a> 
+        </li> 
+        <li><a href="https://github.com/account">Account Settings</a></li> 
+                        <li><a href="/logout">Log Out</a></li> 
+      </ul> 
+    </div><!-- /.userbox --> 
+  
+ 
+ 
+        
+        <div class="topsearch"> 
+  
+    <form action="/search" id="top_search_form" method="get"> 
+      <a href="/search" class="advanced-search tooltipped downwards" title="Advanced Search">Advanced Search</a> 
+      <input type="search" class="search my_repos_autocompleter" name="q" results="5" placeholder="Search&hellip;" /> <input type="submit" value="Search" class="button" /> 
+      <input type="hidden" name="type" value="Everything" /> 
+      <input type="hidden" name="repo" value="" /> 
+      <input type="hidden" name="langOverride" value="" /> 
+      <input type="hidden" name="start_value" value="1" /> 
+    </form> 
+    <ul class="nav"> 
+      <li><a href="/explore">Explore GitHub</a></li> 
+      <li><a href="https://gist.github.com">Gist</a></li> 
+      <li><a href="/blog">Blog</a></li> 
+      <li><a href="http://help.github.com">Help</a></li> 
+    </ul> 
+  
+</div> 
+ 
+      </div> 
+ 
+      
+      
+        
+    <div class="site"> 
+      <div class="pagehead repohead vis-public   "> 
+ 
+      
+ 
+      <div class="title-actions-bar"> 
+        <h1> 
+          <a href="/jsomers">jsomers</a> / <strong><a href="https://github.com/jsomers/quizdash">quizdash</a></strong> 
+          
+          
+        </h1> 
+ 
+        
+    <ul class="actions"> 
+      
+ 
+      
+        <li class="for-owner" style="display:none"><a href="https://github.com/jsomers/quizdash/admin" class="minibutton btn-admin "><span><span class="icon"></span>Admin</span></a></li> 
+        <li> 
+          <a href="/jsomers/quizdash/toggle_watch" class="minibutton btn-watch " id="watch_button" style="display:none"><span><span class="icon"></span>Watch</span></a> 
+          <a href="/jsomers/quizdash/toggle_watch" class="minibutton btn-watch " id="unwatch_button" style="display:none"><span><span class="icon"></span>Unwatch</span></a> 
+        </li> 
+        
+          
+            <li class="for-notforked"><a href="#fork_box" class="minibutton btn-fork " rel="facebox"><span><span class="icon"></span>Fork</span></a></li> 
+            
+ 
+            <div id="fork_box" style="display:none"> 
+              <h2>Where do you want to fork this to?</h2> 
+              
+                <p>Already forked to jsomers!  <a href="/jsomers/quizdash">Go to the fork</a></p> 
+              
+              
+                <div class="rule"></div> 
+                
+                  <div class="full-button"> 
+                    <form action="/jsomers/quizdash/fork" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="c3eec9fe8404f7669e4b32b17b64fe26c3447f9e" /></div> 
+                      <input id="organization" name="organization" type="hidden" value="trustedinsight" /> 
+                      <button class="classy"><span>Fork to trustedinsight (organization)</span></button> 
+                    </form> 
+                  </div> 
+                
+              
+            </div> 
+          
+ 
+          <li id='pull_request_item' class='nspr' style='display:none'><a href="/jsomers/quizdash/pull/new/jugtest" class="minibutton btn-pull-request "><span><span class="icon"></span>Pull Request</span></a></li> 
+      <li class="repostats"> 
+        <ul class="repo-stats"> 
+          <li class="watchers"><a href="/jsomers/quizdash/watchers" title="Watchers" class="tooltipped downwards">1</a></li> 
+          <li class="forks"><a href="/jsomers/quizdash/network" title="Forks" class="tooltipped downwards">1</a></li> 
+        </ul> 
+      </li> 
+    </ul>
 
-</body>
-</html>
+      </div> 
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+ 
+</div>
+</div>
+ 
+    <div id="footer" class="clearfix"> 
+      <div class="site"> 
+        <div class="sponsor"> 
+          <a href="http://www.rackspace.com" class="logo"> 
+            <img alt="Dedicated Server" src="https://assets0.github.com/images/modules/footer/rackspace_logo.png?v2?37941c22e36efdbdf2599d58309d8aee5566e0d1" /> 
+          </a> 
+          Powered by the <a href="http://www.rackspace.com ">Dedicated
+          Servers</a> and<br/> <a href="http://www.rackspacecloud.com">Cloud
+          Computing</a> of Rackspace Hosting<span>&reg;</span> 
+        </div> 
+ 
+        <ul class="links"> 
+          <li class="blog"><a href="https://github.com/blog">Blog</a></li> 
+          <li><a href="http://support.github.com?sso=_-D9qfwBNALVWtVhGCwVCzX3G3akBoO36XQ8M-kMER3mItaw2V5DpBTBMMTZiae4YENqYjlZ38QKhxW_295LHQeCpUDRKGQTSNsk85DPgHVMfMCMmfUjolPWXsR5CVr45HAYtLHQiC2XzNxHniSaI2E5zrexgZzEVNyztrlUTCG83cqkxwVdG53XlNPpksSJfvU9YaDO1A73CV0JDbG-gif4GHCDPQ8XjnXFbL6tgmw">Support</a></li> 
+          <li><a href="https://github.com/training">Training</a></li> 
+          <li><a href="http://jobs.github.com">Job Board</a></li> 
+          <li><a href="http://shop.github.com">Shop</a></li> 
+          <li><a href="https://github.com/contact">Contact</a></li> 
+          <li><a href="http://develop.github.com">API</a></li> 
+          <li><a href="http://status.github.com">Status</a></li> 
+        </ul> 
+        <ul class="sosueme"> 
+          <li class="main">&copy; 2011 <span id="_rrt" title="0.18883s from fe6.rs.github.com">GitHub</span> Inc. All rights reserved.</li> 
+          <li><a href="/site/terms">Terms of Service</a></li> 
+          <li><a href="/site/privacy">Privacy</a></li> 
+          <li><a href="https://github.com/security">Security</a></li> 
+        </ul> 
+      </div> 
+    </div><!-- /#footer --> 
+ 
+    
+      
+      
+        <!-- current locale:  --> 
+        <div class="locales"> 
+          <div class="site"> 
+ 
+            <ul class="choices clearfix limited-locales"> 
+              <li><span class="current">English</span></li> 
+              
+                  <li><a rel="nofollow" href="?locale=de">Deutsch</a></li> 
+              
+                  <li><a rel="nofollow" href="?locale=fr">Français</a></li> 
+              
+                  <li><a rel="nofollow" href="?locale=ja">日本語</a></li> 
+              
+                  <li><a rel="nofollow" href="?locale=pt-BR">Português (BR)</a></li> 
+              
+                  <li><a rel="nofollow" href="?locale=ru">Русский</a></li> 
+              
+                  <li><a rel="nofollow" href="?locale=zh">中文</a></li> 
+              
+              <li class="all"><a href="#" class="minibutton btn-forward js-all-locales"><span><span class="icon"></span>See all available languages</span></a></li> 
+            </ul> 
+ 
+            <div class="all-locales clearfix"> 
+              <h3>Your current locale selection: <strong>English</strong>. Choose another?</h3> 
+              
+              
+                <ul class="choices"> 
+                  
+                      <li><a rel="nofollow" href="?locale=en">English</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=af">Afrikaans</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=ca">Català</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=cs">Čeština</a></li> 
+                  
+                </ul> 
+              
+                <ul class="choices"> 
+                  
+                      <li><a rel="nofollow" href="?locale=de">Deutsch</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=es">Español</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=fr">Français</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=hr">Hrvatski</a></li> 
+                  
+                </ul> 
+              
+                <ul class="choices"> 
+                  
+                      <li><a rel="nofollow" href="?locale=id">Indonesia</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=it">Italiano</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=ja">日本語</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=nl">Nederlands</a></li> 
+                  
+                </ul> 
+              
+                <ul class="choices"> 
+                  
+                      <li><a rel="nofollow" href="?locale=no">Norsk</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=pl">Polski</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=pt-BR">Português (BR)</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=ru">Русский</a></li> 
+                  
+                </ul> 
+              
+                <ul class="choices"> 
+                  
+                      <li><a rel="nofollow" href="?locale=sr">Српски</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=sv">Svenska</a></li> 
+                  
+                      <li><a rel="nofollow" href="?locale=zh">中文</a></li> 
+                  
+                </ul> 
+              
+            </div> 
+ 
+          </div> 
+          <div class="fade"></div> 
+        </div> 
+      
+    
+ 
+    <script>window._auth_token = "c3eec9fe8404f7669e4b32b17b64fe26c3447f9e"</script> 
+    <div id="keyboard_shortcuts_pane" style="display:none"> 
+  <h2>Keyboard Shortcuts</h2> 
+ 
+  <div class="columns threecols"> 
+    <div class="column first"> 
+      <h3>Site wide shortcuts</h3> 
+      <dl class="keyboard-mappings"> 
+        <dt>s</dt> 
+        <dd>Focus site search</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>?</dt> 
+        <dd>Bring up this help dialog</dd> 
+      </dl> 
+    </div><!-- /.column.first --> 
+    <div class="column middle"> 
+      <h3>Commit list</h3> 
+      <dl class="keyboard-mappings"> 
+        <dt>j</dt> 
+        <dd>Move selected down</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>k</dt> 
+        <dd>Move selected up</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>t</dt> 
+        <dd>Open tree</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>p</dt> 
+        <dd>Open parent</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>c <em>or</em> o <em>or</em> enter</dt> 
+        <dd>Open commit</dd> 
+      </dl> 
+    </div><!-- /.column.first --> 
+    <div class="column last"> 
+      <h3>Pull request list</h3> 
+      <dl class="keyboard-mappings"> 
+        <dt>j</dt> 
+        <dd>Move selected down</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>k</dt> 
+        <dd>Move selected up</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>o <em>or</em> enter</dt> 
+        <dd>Open issue</dd> 
+      </dl> 
+    </div><!-- /.columns.last --> 
+  </div><!-- /.columns.equacols --> 
+ 
+  <div class="rule"></div> 
+ 
+  <h3>Issues</h3> 
+ 
+  <div class="columns threecols"> 
+    <div class="column first"> 
+      <dl class="keyboard-mappings"> 
+        <dt>j</dt> 
+        <dd>Move selected down</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>k</dt> 
+        <dd>Move selected up</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>x</dt> 
+        <dd>Toggle select target</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>o <em>or</em> enter</dt> 
+        <dd>Open issue</dd> 
+      </dl> 
+    </div><!-- /.column.first --> 
+    <div class="column middle"> 
+      <dl class="keyboard-mappings"> 
+        <dt>I</dt> 
+        <dd>Mark selected as read</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>U</dt> 
+        <dd>Mark selected as unread</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>e</dt> 
+        <dd>Close selected</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>y</dt> 
+        <dd>Remove selected from view</dd> 
+      </dl> 
+    </div><!-- /.column.middle --> 
+    <div class="column last"> 
+      <dl class="keyboard-mappings"> 
+        <dt>c</dt> 
+        <dd>Create issue</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>l</dt> 
+        <dd>Create label</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>i</dt> 
+        <dd>Back to inbox</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>u</dt> 
+        <dd>Back to issues</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>/</dt> 
+        <dd>Focus issues search</dd> 
+      </dl> 
+    </div> 
+  </div> 
+ 
+  <div class="rule"></div> 
+ 
+  <h3>Network Graph</h3> 
+  <div class="columns equacols"> 
+    <div class="column first"> 
+      <dl class="keyboard-mappings"> 
+        <dt>← <em>or</em> h</dt> 
+        <dd>Scroll left</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>→ <em>or</em> l</dt> 
+        <dd>Scroll right</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>↑ <em>or</em> k</dt> 
+        <dd>Scroll up</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>↓ <em>or</em> j</dt> 
+        <dd>Scroll down</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>t</dt> 
+        <dd>Toggle visibility of head labels</dd> 
+      </dl> 
+    </div><!-- /.column.first --> 
+    <div class="column last"> 
+      <dl class="keyboard-mappings"> 
+        <dt>shift ← <em>or</em> shift h</dt> 
+        <dd>Scroll all the way left</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>shift → <em>or</em> shift l</dt> 
+        <dd>Scroll all the way right</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>shift ↑ <em>or</em> shift k</dt> 
+        <dd>Scroll all the way up</dd> 
+      </dl> 
+      <dl class="keyboard-mappings"> 
+        <dt>shift ↓ <em>or</em> shift j</dt> 
+        <dd>Scroll all the way down</dd> 
+      </dl> 
+    </div><!-- /.column.last --> 
+  </div> 
+ 
+</div> 
+    
+ 
+    <!--[if IE 8]>
+    <script type="text/javascript" charset="utf-8">
+      $(document.body).addClass("ie8")
+    </script>
+    <![endif]--> 
+ 
+    <!--[if IE 7]>
+    <script type="text/javascript" charset="utf-8">
+      $(document.body).addClass("ie7")
+    </script>
+    <![endif]--> 
+ 
+    
+    <script type='text/javascript'>mpq.push(['identify', 'jsomers']);</script> 
+    
+  </body> 
+</html> 
