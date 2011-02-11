@@ -13,6 +13,7 @@
 			console = { log: function() {} }
 		</script> 
 		<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" %>
+		<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" %>
 	</head> 
 	
 	<body class="logged_in page-dashboard">
@@ -146,5 +147,39 @@
 				<div class="fade"></div> 
 			</div><!-- /.locales --> 
 		</div><!-- /#main --> 
+		
+<script type="text/javascript">
+	// leaderboard.js
+	
+	get_current_places = function() {
+		// Gets the rankings baked into the DOM.
+		return [["silberd0llar", [0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1]], ["jsomers", [0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0]], ["nsrivast", [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1]]];
+	}
+	
+	update_leaderboard = function() {
+		// Takes a new game object, and the rankings data in particular,
+		// and updates the leaderboard <ul> with new information. Animates
+		// the transitions.
+	}
+	
+	diffstat_bar = function(pointices) {
+		var bar = $("<span>").addClass("diffstat-bar");
+		for (i = 0; i < pointices.length; i++) {
+			var dot = $("<span>•</span>")
+			if (pointices[i] == "1")
+				dot.addClass("correct")
+			bar.append( dot )
+		}
+		return bar;
+	}
+	
+	swap = function() {
+		$me = $(".diffstat:eq(1)");
+		$ne = $me.clone();
+		$me.remove();
+		$ne.appendTo( $("#repo_listing") );
+		$ne.effect("highlight", {color: "#fffeeb"}, 1000);
+	}
+</script>
 	</body> 
 </html>

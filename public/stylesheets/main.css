@@ -854,7 +854,7 @@ a.button:hover {
 #dashboard ul.repo_list .private {
     border: none;
     border-bottom: 1px solid #e5e5e5;
-    background: #fffeeb;
+    background: #ddffdd;
 }
 #dashboard ul.repo_list li a {
     display: block;
@@ -1426,9 +1426,8 @@ ul.repo-stats li.forks.forked a {
     height: 9px;
     text-decoration: none;
     text-align: left;
-    background: url(/images/modules/commit/diffstat.png) 0 -100px repeat-x;
 }
-.diffstat .correct {
+.diffstat-bar span.correct {
     float: left;
     display: block;
     width: 10px;
@@ -1436,7 +1435,7 @@ ul.repo-stats li.forks.forked a {
     text-indent: -9999px;
     background: url(/images/modules/commit/diffstat.png) 0 0 repeat-x;
 }
-.diffstat .nil {
+.diffstat-bar span {
     float: left;
     width: 10px;
     height: 9px;
