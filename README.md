@@ -25,3 +25,4 @@
 - flash colors in the spots when other players get there (how to represent this?)
 	- one idea is a bunch of small multiples, each of which looks like a minified version of the whole board, each tied to a person's name then the slots there would be filled in and the mini-boxes as a whole would be sorted according to who was doing what.
 	- perhaps cleaner would be something like github's little commit dots, one for each slot and a set for each player, that are gradually filled in as players answer questions.
+- login for users, stats, etc.

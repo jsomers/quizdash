@@ -149,6 +149,16 @@
 		</div><!-- /#main --> 
 		
 <script type="text/javascript">
+	// Like client.js in the mindy-node:
+	var CONFIG = { nick: "jsomers"
+	             , nick: "#"   // set in onConnect
+	             , id: null    // set in onConnect
+	             , last_message_time: 1
+				 , last_action_time: 1
+	             , focus: true //event listeners bound in onConnect
+	             , unread: 0 //updated in the message-processing loop
+	             };
+
 	// leaderboard.js
 	
 	current_leaderboard = function() {
@@ -169,12 +179,10 @@
 		return leaderboard;
 	}
 	
-	new_leaderboard = function(leaderboard) {
-		// Takes a new game object, and the rankings data in particular,
-		// and updates the leaderboard <ul> with new information. Animates
-		// the transitions.
-		
-		// Object probably like [["jsomers", [0, 1, 0...]], ["pingoaf", [1, 1, 0...]]]
+	function ordinal(n) {
+	   var s = ["th","st","nd","rd"],
+	       v = n % 100;
+	   return n + ( s[(v - 20) % 10] || s[v] || s[0] );
 	}
 	
 	diffstat_bar = function(pointices) {
@@ -186,6 +194,36 @@
 			bar.append( dot )
 		}
 		return bar;
+	}
+	
+	new_leaderboard = function(leaderboard) {
+		// Takes a leaderboard from the game object, updates the DOM with the
+		// new information, and animates the transitions. The "leaderboard" is
+		// an array of arrays: ["jsomers", [0, 1, 0...]], ["pingoaf", [1,...]]
+		
+		var old = current_leaderboard()
+		$("#repo_list").empty()
+		for (i = 0; i < leaderboard.length; i++) {
+			var pos = leaderboard[i];
+			var li = $("<li>").addClass("source diffstat");
+			var bar = diffstat_bar(pos[1]);
+			var name = $("<span>").addClass("diffstat-summary");
+			var place = $("<span>").addClass("place");
+			place.html( ordinal(i + 1) );
+			name.html( pos[0] );
+			if (pos[0] == CONFIG.nick) {
+				li.addClass("private");
+				name.addClass("me"); // Rather than putting these classes on there, just have one class
+				place.addClass("me"); // on the diffstat li and have those rules trickle down. Class = "me".
+			};
+			bar.appendTo(li);
+			name.appendTo(li);
+			place.appendTo(li);
+			li.appendTo( $("#repo_list") );
+			if (i != old[pos[0]]) { // Player has changed positions.
+				li.effect("highlight", {color: "#fffeeb"}, 1000);
+			}
+		};
 	}
 	
 	swap = function() {
