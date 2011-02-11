@@ -151,9 +151,9 @@
 <script type="text/javascript">
 	// leaderboard.js
 	
-	get_current_leaderboard = function() {
+	current_leaderboard = function() {
 		// Gets the rankings that are implicitly baked into the DOM.
-		var leaderboard = [];
+		var leaderboard = {};
 		$(".diffstat").each(function(i, e) {
 			var player_name = $(e).find(".diffstat-summary").text();
 			var pointices = [];
@@ -163,10 +163,10 @@
 				else
 					pointices.push(0)
 			})
-			leaderboard.push([player_name, pointices])
+			leaderboard[player_name] = {"place": i, "pointices": pointices}
 		})
 		
-		return leaderboard;//[["silberd0llar", [0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1]], ["jsomers", [0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0]], ["nsrivast", [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1]]];
+		return leaderboard;
 	}
 	
 	update_leaderboard = function() {
