@@ -853,7 +853,7 @@ a.button:hover {
 }
 #dashboard ul.repo_list .me {
     border: none;
-    background: #ddffdd;
+    background: #ccffff;
     border-bottom: 1px solid #e5e5e5;
 }
 #dashboard ul.repo_list li a {

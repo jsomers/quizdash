@@ -254,8 +254,9 @@
 			place.appendTo(a);
 			a.appendTo(li);
 			li.appendTo( $("#repo_listing") );
-			if (i != old[pos[0]]["place"] && i < old[pos[0]]["place"]) { // Player has changed positions.
-				li.effect("highlight", {color: "#fffeeb"}, 1000);
+			if (i != old[pos[0]]["place"]) { // Player has changed positions.
+				color = (i < old[pos[0]]["place"] ? "#ddffdd" : "#ffcccc");
+				li.effect("highlight", {color: color}, 1000);
 			}
 		};
 	}
