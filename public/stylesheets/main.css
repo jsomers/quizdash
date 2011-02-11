@@ -1455,3 +1455,20 @@ ul.repo-stats li.forks.forked a {
     text-indent: -9999px;
     background: url(/images/modules/commit/diffstat.png) 0 -100px repeat-x;
 }
+dl.form dd input[type=text],dl.form dd input[type=password] {
+    margin-right: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    width: 400px;
+    padding: 5px;
+    color: #666;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+dl.form dt {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}

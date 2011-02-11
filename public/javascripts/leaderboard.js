@@ -81,14 +81,13 @@ flash = function(cur, old, el, iam) {
 }
 
 new_leaderboard = function(leaderboard) {
-	// Takes a leaderboard from the game object, updates the DOM with the
-	// new information, and animates the transitions. The "leaderboard" is
-	// an array of arrays: ["jsomers", [0, 1, 0...]], ["pingoaf", [1,...]]
+	// Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]],
+	// updates the DOM with the new information, and animates the transitions.
 	
 	// TODO: Animate the transitions?
-	
 	// TODO: Color of background highlight should be based on position.
-	// Low = red, then yellow, then green.
+	// < 5 = red, 3-5 = yellow, 2 = blue, 1 = green.
+	// TODO: Maybe the dots themselves should flash?
 	
 	var old = current_leaderboard()
 	$("#repo_listing").empty()
