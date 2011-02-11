@@ -151,9 +151,22 @@
 <script type="text/javascript">
 	// leaderboard.js
 	
-	get_current_places = function() {
-		// Gets the rankings baked into the DOM.
-		return [["silberd0llar", [0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1]], ["jsomers", [0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0]], ["nsrivast", [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1]]];
+	get_current_leaderboard = function() {
+		// Gets the rankings that are implicitly baked into the DOM.
+		var leaderboard = [];
+		$(".diffstat").each(function(i, e) {
+			var player_name = $(e).find(".diffstat-summary").text();
+			var pointices = [];
+			$(e).find(".diffstat-bar span").each(function(j, f) {
+				if ( $(f).hasClass("correct") )
+					pointices.push(1)
+				else
+					pointices.push(0)
+			})
+			leaderboard.push([player_name, pointices])
+		})
+		
+		return leaderboard;//[["silberd0llar", [0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1]], ["jsomers", [0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0]], ["nsrivast", [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1]]];
 	}
 	
 	update_leaderboard = function() {
