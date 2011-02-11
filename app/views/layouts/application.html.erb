@@ -188,11 +188,20 @@
 		var bar = $("<span>").addClass("diffstat-bar");
 		for (var i = 0; i < pointices.length; i++) {
 			var dot = $("<span>•</span>")
-			if (pointices[i] == "1")
+			if (pointices[i] == 1)
 				dot.addClass("correct")
 			bar.append( dot )
 		}
 		return bar;
+	}
+	
+	n_correct = function(pointices) {
+		var n = 0;
+		for (var i = 0; i < pointices.length; i++) {
+			if (pointices[i] == 1)
+				n += 1;
+		}
+		return n;
 	}
 	
 	test_leaderboard = [
@@ -228,17 +237,18 @@
 			var li = $("<li>").addClass("source diffstat");
 			var a = $("<a>").attr("href", "#").addClass("tooltipped leftwards");
 			var bar = diffstat_bar(pos[1]);
+			var ct = $("<span>").addClass("diffstat-count");
 			var name = $("<span>").addClass("diffstat-summary");
 			var place = $("<span>").addClass("place");
 			place.html( ordinal(i + 1) );
 			name.html( pos[0] );
+			ct.html( n_correct(pos[1]) );
 			if (pos[0] == CONFIG.nick) {
-				li.addClass("private");
-				name.addClass("me"); // Rather than putting these classes on there, just have one class
-				place.addClass("me"); // on the diffstat li and have those rules trickle down. Class = "me".
+				li.addClass("me");
 			} else {
 				li.addClass("public");
 			}
+			ct.appendTo(a);
 			bar.appendTo(a);
 			name.appendTo(a);
 			place.appendTo(a);
