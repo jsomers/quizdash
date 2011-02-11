@@ -847,14 +847,14 @@ a.button:hover {
     margin: 0;
     padding: 0 0 0 7px;
 }
-#dashboard ul.repo_list .public {
+#dashboard ul.repo_list li {
     border: none;
     border-bottom: 1px solid #e5e5e5;
 }
-#dashboard ul.repo_list .private {
+#dashboard ul.repo_list .me {
     border: none;
-    border-bottom: 1px solid #e5e5e5;
     background: #ddffdd;
+    border-bottom: 1px solid #e5e5e5;
 }
 #dashboard ul.repo_list li a {
     display: block;
@@ -868,10 +868,12 @@ a.button:hover {
     color: #999;
     float: right;
 }
-#dashboard ul.repo_list li span.place.me {
+#dashboard ul.repo_list li.me span.place {
     color: #333;
     font-size: 16px;
     font-weight: bold;
+    position: relative;
+    top: -3px;
 }
 #dashboard ul.repo_list li a .repo {
     font-weight: bold;
@@ -1412,13 +1414,24 @@ ul.repo-stats li.forks.forked a {
 .diffstat-summary {
     font-family: helvetica,arial,freesans,clean,sans-serif;
     text-align: right;
+    margin-left: 3px;
     color: #999;
     font-weight: bold;
     font-size: 11px;
 }
-.diffstat-summary.me {
+.diffstat-count {
+    font-family: helvetica,arial,freesans,clean,sans-serif;
+    text-align: left;
+    color: #999;
+    font-weight: bold;
+    font-size: 11px;
+    margin-right: 3px;
+}
+.me .diffstat-count {
     color: #333;
-    font-size: 16px;
+}
+.me .diffstat-summary {
+    color: #333;
 }
 .diffstat-bar {
     display: inline-block;
