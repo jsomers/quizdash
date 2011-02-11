@@ -151,7 +151,6 @@
 <script type="text/javascript">
 	// Like client.js in the mindy-node:
 	var CONFIG = { nick: "jsomers"
-	             , nick: "#"   // set in onConnect
 	             , id: null    // set in onConnect
 	             , last_message_time: 1
 				 , last_action_time: 1
@@ -187,7 +186,7 @@
 	
 	diffstat_bar = function(pointices) {
 		var bar = $("<span>").addClass("diffstat-bar");
-		for (i = 0; i < pointices.length; i++) {
+		for (var i = 0; i < pointices.length; i++) {
 			var dot = $("<span>•</span>")
 			if (pointices[i] == "1")
 				dot.addClass("correct")
@@ -196,16 +195,38 @@
 		return bar;
 	}
 	
+	test_leaderboard = [
+		["pingoaf", [1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0]],
+		["jsomers", [0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0]],
+		["silberd0llar", [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]],
+		["nsrivast", [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0]]
+	]
+	
+	test_leaderboard2 = [
+		["silberd0llar", [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]],
+		["nsrivast", [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0]],
+		["pingoaf", [1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0]],
+		["jsomers", [0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0]]
+	]
+	
 	new_leaderboard = function(leaderboard) {
 		// Takes a leaderboard from the game object, updates the DOM with the
 		// new information, and animates the transitions. The "leaderboard" is
 		// an array of arrays: ["jsomers", [0, 1, 0...]], ["pingoaf", [1,...]]
 		
+		// FIXME: Why are the rows shorter on the JS event? Because of spaces between the spans.
+		
+		// TODO: Animate the transitions?
+		
+		// TODO: Color of background highlight should be based on position.
+		// Low = red, then yellow, then green.
+		
 		var old = current_leaderboard()
-		$("#repo_list").empty()
-		for (i = 0; i < leaderboard.length; i++) {
+		$("#repo_listing").empty()
+		for (var i = 0; i < leaderboard.length; i++) {
 			var pos = leaderboard[i];
 			var li = $("<li>").addClass("source diffstat");
+			var a = $("<a>").attr("href", "#").addClass("tooltipped leftwards");
 			var bar = diffstat_bar(pos[1]);
 			var name = $("<span>").addClass("diffstat-summary");
 			var place = $("<span>").addClass("place");
@@ -215,12 +236,15 @@
 				li.addClass("private");
 				name.addClass("me"); // Rather than putting these classes on there, just have one class
 				place.addClass("me"); // on the diffstat li and have those rules trickle down. Class = "me".
-			};
-			bar.appendTo(li);
-			name.appendTo(li);
-			place.appendTo(li);
-			li.appendTo( $("#repo_list") );
-			if (i != old[pos[0]]) { // Player has changed positions.
+			} else {
+				li.addClass("public");
+			}
+			bar.appendTo(a);
+			name.appendTo(a);
+			place.appendTo(a);
+			a.appendTo(li);
+			li.appendTo( $("#repo_listing") );
+			if (i != old[pos[0]]["place"] && i < old[pos[0]]["place"]) { // Player has changed positions.
 				li.effect("highlight", {color: "#fffeeb"}, 1000);
 			}
 		};

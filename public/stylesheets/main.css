@@ -858,7 +858,7 @@ a.button:hover {
 }
 #dashboard ul.repo_list li a {
     display: block;
-    padding: 6px 10px 5px 0px;
+    padding: 8px 10px 7px 0px;
     font-size: 14px;
 }
 #dashboard ul.repo_list li a:hover {
@@ -870,7 +870,7 @@ a.button:hover {
 }
 #dashboard ul.repo_list li span.place.me {
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
 }
 #dashboard ul.repo_list li a .repo {
@@ -1418,7 +1418,7 @@ ul.repo-stats li.forks.forked a {
 }
 .diffstat-summary.me {
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
 }
 .diffstat-bar {
     display: inline-block;
