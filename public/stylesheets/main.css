@@ -861,13 +861,17 @@ a.button:hover {
     padding: 6px 10px 5px 0px;
     font-size: 14px;
 }
+#dashboard ul.repo_list li a:hover {
+    text-decoration: none;
+}
 #dashboard ul.repo_list li span.place {
     color: #999;
     float: right;
-    font-weight: bold;
 }
 #dashboard ul.repo_list li span.place.me {
-    color: #666;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
 }
 #dashboard ul.repo_list li a .repo {
     font-weight: bold;
@@ -1413,7 +1417,8 @@ ul.repo-stats li.forks.forked a {
     font-size: 11px;
 }
 .diffstat-summary.me {
-    color: #666;
+    color: #333;
+    font-size: 14px;
 }
 .diffstat-bar {
     display: inline-block;
