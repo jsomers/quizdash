@@ -845,21 +845,21 @@ a.button:hover {
 #dashboard ul.repo_list li {
     display: block;
     margin: 0;
-    padding: 0 0 0 22px;
+    padding: 0 0 0 7px;
 }
 #dashboard ul.repo_list .public {
     border: none;
     border-bottom: 1px solid #e5e5e5;
-    background: url(/images/icons/public.png) 10px 8px no-repeat #fff;
+
 }
 #dashboard ul.repo_list .private {
     border: none;
     border-bottom: 1px solid #e5e5e5;
-    background: url(/images/icons/private.png) 10px 8px no-repeat #fffeeb;
+    background: #fffeeb;
 }
 #dashboard ul.repo_list li a {
     display: block;
-    padding: 6px 10px 5px 10px;
+    padding: 6px 10px 5px 0px;
     font-size: 14px;
     background: url(/images/modules/repo_list/arrow-40.png) 97% 50% no-repeat;
 }
@@ -1407,4 +1407,34 @@ ul.repo-stats li.forks.forked a {
 }
 #dashboard .repos img {
     vertical-align: middle;
+}
+.diffstat-summary {
+    font-family: helvetica,arial,freesans,clean,sans-serif;
+    text-align: right;
+    color: #999;
+    font-weight: bold;
+    font-size: 11px;
+}
+.diffstat-bar {
+    display: inline-block;
+    width: 200px;
+    height: 9px;
+    text-decoration: none;
+    text-align: left;
+    background: url(/images/modules/commit/diffstat.png) 0 -100px repeat-x;
+}
+.diffstat .correct {
+    float: left;
+    display: block;
+    width: 10px;
+    height: 9px;
+    text-indent: -9999px;
+    background: url(/images/modules/commit/diffstat.png) 0 0 repeat-x;
+}
+.diffstat .nil {
+    float: left;
+    width: 10px;
+    height: 9px;
+    text-indent: -9999px;
+    background: url(/images/modules/commit/diffstat.png) 0 -100px repeat-x;
 }

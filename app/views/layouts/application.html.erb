@@ -92,49 +92,7 @@
 		  			<div class="news">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 					</div>
-					<div class="repos" id="your_repos"> 
-						<div class="top-bar"> 
-							<h2>Leaderboard <em>(14 players)</em></h2> 
-							<a href="/repositories/new" class="button new-repo">New Repository</a> 
-						</div> 
-      
-						<div class="filter-bar"> 
-							<ul class="repo_filterer"> 
-								<li class="all_repos">
-									<a href="#" class="repo_filter filter_selected" rel="public, li.private">All Repositories</a>
-								</li> 
-		            			<li><a href="#" class="repo_filter" rel="public">Public</a></li> 
-		            			<li><a href="#" class="repo_filter" rel="private">Private</a></li> 
-		            			<li><a href="#" class="repo_filter" rel="source">Sources</a></li>
-		            			<li><a href="#" class="repo_filter" rel="fork">Forks</a></li>
-		          			</ul> 
-		        		</div> 
-        		
-						<ul id="repo_listing" class="repo_list"> 
-          
-							<li class="public source"> 
-								<a href="https://github.com/jsomers/quizdash"> 
-									<span class="owner">jsomers</span>/<span class="repo">quizdash</span> 
-								</a> 
-							</li> 
- 
-							<li class="private source"> 
-								<a href="https://github.com/jsomers/booktour"> 
-									<span class="owner">jsomers</span>/<span class="repo">booktour</span> 
-								</a> 
-							</li> 
- 
-							<li class="public source"> 
-								<a href="https://github.com/jsomers/solitaire"> 
-									<span class="owner">jsomers</span>/<span class="repo">solitaire</span> 
-								</a> 
-							</li> 
-						</ul> 
-      
-						<div class="bottom-bar">
-							<a href="#" class="show-more" id="inline_your_repos">Show 4 more repositories&hellip;</a>
-						</div>
-					</div><!-- /#your_repos --> 
+					<%= render "sandbox/leaderboard" %>
 				</div><!-- /#dashboard --> 
 			</div><!-- /.site --> 
  
