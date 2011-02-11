@@ -850,7 +850,6 @@ a.button:hover {
 #dashboard ul.repo_list .public {
     border: none;
     border-bottom: 1px solid #e5e5e5;
-
 }
 #dashboard ul.repo_list .private {
     border: none;
@@ -861,16 +860,11 @@ a.button:hover {
     display: block;
     padding: 6px 10px 5px 0px;
     font-size: 14px;
-    background: url(/images/modules/repo_list/arrow-40.png) 97% 50% no-repeat;
 }
-#dashboard ul.repo_list li.private a {
-    background-image: url(/images/modules/repo_list/arrow-60.png);
-}
-#dashboard ul.repo_list li a:hover {
-    background-image: url(/images/modules/repo_list/arrow-80.png);
-}
-#dashboard ul.repo_list li.private a:hover {
-    background-image: url(/images/modules/repo_list/arrow-90.png);
+#dashboard ul.repo_list li span.place {
+    color: #999;
+    float: right;
+    font-weight: bold;
 }
 #dashboard ul.repo_list li a .repo {
     font-weight: bold;
