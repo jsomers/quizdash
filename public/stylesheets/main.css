@@ -1478,11 +1478,10 @@ ul.repositories>li.simple {
     width: 250px;
 }
 ul.repositories>li.correct {
-    background: url(/images/icons/public.png) 6px 9px no-repeat;
-    background-color: #ddffdd;
+    background-color: #99ff99;
 }
 ul.repositories>li.correct ul.repo-stats  {
-    background-color: #ddffdd;
+    background-color: #99ff99;
 }
 ul.repositories>li {
     list-style-type: none;
@@ -1499,13 +1498,14 @@ ul.repositories ul.repo-stats {
     border: none;
     font-size: 11px;
     font-weight: bold;
-    padding-left: 15px;
-    
     z-index: 5;
 }
 ul.repositories ul.repo-stats li {
     border: none;
     color: #666;
+}
+ul.repositories ul.repo-stats li.hint {
+    text-align: center;
 }
 ul.repositories ul.repo-stats li a {
     color: #666!important;
@@ -1515,9 +1515,11 @@ ul.repositories ul.repo-stats li a {
 }
 ul.repositories h3 {
     margin: 0;
-    padding-left: 18px;
+    text-align: center;
     font-size: 14px;
     white-space: nowrap;
+    padding-left: 23px;
+    color: #333;
 }
 
 div.lefterly {

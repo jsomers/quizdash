@@ -158,6 +158,16 @@
 	// => Client-side validation? Yes. Scramble the answers?
 	// => Going to fire an event when an answer's submitted.
 	
+	function mark_correct(q, ans) {
+		var q = $(".repositories > li[qid=" + q + "]");
+		q.find("h3").html(ans);
+		q.find("li.hint").remove();
+		q.addClass("correct");
+		q.find("ul.repo-stats").effect("highlight", {color: "#22dd00"}, 500);
+		q.effect("highlight", {color: "#22dd00"}, 500);
+		q.find("img").show();
+	}
+	
 	// Step 2:
 	// Histogram & Clock and the rest of the top bar.
 	
