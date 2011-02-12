@@ -161,10 +161,11 @@
 	function mark_correct(q, ans) {
 		var q = $(".repositories > li[qid=" + q + "]");
 		q.find("h3").html(ans);
+		q.find("h3").removeClass("hint");
 		q.find("li.hint").remove();
 		q.addClass("correct");
-		q.find("ul.repo-stats").effect("highlight", {color: "#22dd00"}, 500);
-		q.effect("highlight", {color: "#22dd00"}, 500);
+		q.find("ul.repo-stats").effect("highlight", {color: "yellow"}, 500);
+		q.effect("highlight", {color: "yellow"}, 500);
 		q.find("img").show();
 	}
 	
