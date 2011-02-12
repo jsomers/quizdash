@@ -1286,7 +1286,7 @@ ul.repo-stats li.watchers.watching a {
     color: #333;
 }
 ul.repo-stats li.forks a {
-    background-image: url(/images/modules/pagehead/repostat_forks.png);
+    background-image: url(/images/modules/pagehead/repostat_ppl.png);
 }
 ul.repo-stats li.forks.forked a {
     background-image: url(/images/modules/pagehead/repostat_forks-forked.png);
@@ -1459,7 +1459,7 @@ dl.form dd input[type=text],dl.form dd input[type=password] {
     margin-right: 5px;
     margin-left: 10px;
     font-size: 14px;
-    width: 400px;
+    width: 538px;
     padding: 5px;
     color: #666;
     background-repeat: no-repeat;
@@ -1471,4 +1471,62 @@ dl.form dt {
     font-size: 14px;
     font-weight: bold;
     color: #333;
+}
+ul.repositories>li.simple {
+    padding-bottom: 8px;
+    margin: 10px 0 3px 10px;
+    width: 250px;
+}
+ul.repositories>li.correct {
+    background: url(/images/icons/public.png) 6px 9px no-repeat;
+    background-color: #ddffdd;
+}
+ul.repositories>li.correct ul.repo-stats  {
+    background-color: #ddffdd;
+}
+ul.repositories>li {
+    list-style-type: none;
+    margin: 0 0 10px 0;
+    padding: 8px 10px 0 10px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+ul.repositories ul.repo-stats {
+    position: relative;
+    float: right;
+    border: none;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 15px;
+    
+    z-index: 5;
+}
+ul.repositories ul.repo-stats li {
+    border: none;
+    color: #666;
+}
+ul.repositories ul.repo-stats li a {
+    color: #666!important;
+    border: none;
+    background-color: transparent;
+    background-position: 5px -2px;
+}
+ul.repositories h3 {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+div.lefterly {
+    float: left;
+    width: 250px;
+}
+
+div.righterly {
+    float: right;
+    width: 250px;
+    margin-right: 30px;
 }

@@ -18,7 +18,7 @@
 	<body class="logged_in page-dashboard">
 		<div class="" id="main">
 			<div id="header" class="true"> 
-				<a class="logo boring" href="https://github.com/"> 
+				<a class="logo boring" href="/"> 
 					<img src="http://github.com/images/modules/header/logov3.png?changed" class="default" alt="github" /> 
 				</a> 
 
@@ -28,9 +28,9 @@
 						<a href="https://github.com/jsomers" class="name">jsomers</a> 
 					</div> 
 					<ul class="usernav"> 
-						<li><a href="https://github.com/">Dashboard</a></li> 
+						<li><a href="https://github.com/">My stats</a></li> 
 						<li> 
-							<a href="https://github.com/inbox">Inbox</a> 
+							<a href="https://github.com/inbox">My quizzes</a> 
 							<a href="https://github.com/inbox" class="unread_count ">0</a> 
 						</li> 
 						<li><a href="https://github.com/account">Account Settings</a></li> 
@@ -46,8 +46,8 @@
 		    		</form> 
     		
 					<ul class="nav"> 
-		      			<li><a href="/explore">Explore GitHub</a></li> 
-		      			<li><a href="https://gist.github.com">Gist</a></li> 
+		      			<li><a href="/explore">Find quizzes</a></li> 
+		      			<li><a href="https://gist.github.com">Create a quiz</a></li> 
 		      			<li><a href="/blog">Blog</a></li> 
 		      			<li><a href="http://help.github.com">Help</a></li> 
 		    		</ul> 
@@ -99,26 +99,20 @@
 			<div id="footer" class="clearfix"> 
 				<div class="site"> 
 					<div class="sponsor"> 
-						<a href="http://www.rackspace.com" class="logo"> 
-		 					<img alt="Dedicated Server" src="https://assets3.github.com/images/modules/footer/rackspace_logo.png?v2?1aa00f067e8c6280717bc95120ecdd573f29367f" /> 
+						<a href="http://www.jsomers.net/" class="logo"> 
+		 					<img alt="jsomers.net" src="/images/big_dino.png" style="height: 50px" /> 
 						</a> 
-						Powered by the <a href="http://www.rackspace.com ">Dedicated
-							Servers</a> and<br/> <a href="http://www.rackspacecloud.com">Cloud
-								Computing</a> of Rackspace Hosting<span>&reg;</span> 
+						Powered by <a href="http://www.jsomers.net">James Somers</a> <br/>of <a href="http://www.jimbojeopardy.com">Jimbo Jeopardy!</a>
 					</div> 
 
 					<ul class="links"> 
 						<li class="blog"><a href="https://github.com/blog">Blog</a></li> 
-						<li><a href="http://support.github.com">Support</a></li> 
-						<li><a href="https://github.com/training">Training</a></li> 
-						<li><a href="http://jobs.github.com">Job Board</a></li> 
-						<li><a href="http://shop.github.com">Shop</a></li> 
 						<li><a href="https://github.com/contact">Contact</a></li> 
-						<li><a href="http://develop.github.com">API</a></li> 
-						<li><a href="http://status.github.com">Status</a></li> 
+						<li><a href="http://develop.github.com">About</a></li> 
+						<li><a href="http://status.github.com">API</a></li> 
 					</ul> 
 					<ul class="sosueme"> 
-						<li class="main">&copy; 2011 <span id="_rrt" title="0.10439s from fe5.rs.github.com">GitHub</span> Inc. All rights reserved.</li> 
+						<li class="main">&copy; 2011 <span id="_rrt" title="0.10439s from fe5.rs.github.com">James Somers.</span> All rights reserved.</li> 
 						<li><a href="/site/terms">Terms of Service</a></li> 
 						<li><a href="/site/privacy">Privacy</a></li> 
 						<li><a href="https://github.com/security">Security</a></li> 
@@ -155,6 +149,7 @@
 		focus: true
 	};
 	
+	// Step 1:
 	// The actual text box interface:
 	// => Just one text box to enter clues.
 	// => That text box is monitored for string matches.
@@ -162,6 +157,13 @@
 	// => Flash in the box when a guess is made correctly.
 	// => Client-side validation? Yes. Scramble the answers?
 	// => Going to fire an event when an answer's submitted.
+	
+	// Step 2:
+	// Histogram & Clock and the rest of the top bar.
+	
+	// Step 3:
+	// Rename shit and clean up a bit.
+	// Merge into master and start hacking juggernaut, data, etc.
 
 </script>
 	</body> 

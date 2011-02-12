@@ -20,9 +20,10 @@
 - sessions and player disconnects?
 - submitting an answer sends a message which on_success validates back to user and to everyone else and on_fail does nothing
 - syncing games and managing timers
-- histogram with everyone's progress
+- histogram with everyone's progress. or, they could show activity on the site more generally!
 - your position out of n players
 - flash colors in the spots when other players get there (how to represent this?)
 	- one idea is a bunch of small multiples, each of which looks like a minified version of the whole board, each tied to a person's name then the slots there would be filled in and the mini-boxes as a whole would be sorted according to who was doing what.
 	- perhaps cleaner would be something like github's little commit dots, one for each slot and a set for each player, that are gradually filled in as players answer questions.
 - login for users, stats, etc.
+- can RAILS handle all these concurrent connections? How to scale?
