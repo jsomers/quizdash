@@ -157,6 +157,8 @@
 	// => Client-side validation? Yes. Scramble the answers?
 	// => Going to fire an event when an answer's submitted.
 	
+	answers = {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}
+	
 	function mark_correct(q, ans) {
 		var q = $(".repositories > li[qid=" + q + "]");
 		q.find("h3").html(ans);
@@ -168,8 +170,13 @@
 		q.find("img").show();
 	}
 	
-	$("#answer").keydown(function() {
-		
+	$("#answer").keyup(function() {
+		var ans = $("#answer").val();
+		if (typeof(answers[ans]) != "undefined") {
+			mark_correct(answers[ans], ans);
+			$("#answer").val("");
+		};
+		// TODO: Clear correct answers.
 	})
 	
 	// Step 2:
