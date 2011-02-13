@@ -151,7 +151,6 @@
 	
 	// Step 1:
 	// The actual text box interface:
-	// => Just one text box to enter clues.
 	// => That text box is monitored for string matches.
 	// => Two columns of boxes with optional labels sitting on top of them.
 	// => Flash in the box when a guess is made correctly.
@@ -168,6 +167,10 @@
 		q.effect("highlight", {color: "yellow"}, 500);
 		q.find("img").show();
 	}
+	
+	$("#answer").keydown(function() {
+		
+	})
 	
 	// Step 2:
 	// Histogram & Clock and the rest of the top bar.

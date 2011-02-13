@@ -1478,10 +1478,10 @@ ul.repositories>li.simple {
     width: 250px;
 }
 ul.repositories>li.correct {
-    background-color: #22dd00;
+    background-color: #ddffdd;
 }
 ul.repositories>li.correct ul.repo-stats  {
-    background-color: #22dd00;
+    background-color: #ddffdd;
 }
 ul.repositories>li {
     list-style-type: none;
@@ -1523,7 +1523,7 @@ ul.repositories h3 {
     font-size: 14px;
     white-space: nowrap;
     padding-left: 23px;
-    color: #333;
+    color: #444;
 }
 
 div.lefterly {
