@@ -524,32 +524,10 @@ ul.big-actions li {
     height: 91px;
     min-width: 950px;
 }
-#header .logo {
-    position: relative;
-    left: -6px;
-}
-#header .logo.boring {
-    left: 20px;
-    top: 14px;
-}
 #header .logo img {
     position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transition: opacity .25s linear;
-    -moz-transition: opacity .25s linear;
-}
-#header .logo img.hover {
-    opacity: 0;
-}
-#header .logo:hover img.hover {
-    opacity: 1;
-}
-#header .logo img.default {
-    opacity: 1;
-}
-#header .logo:hover img.default {
-    opacity: 0;
+    top: 2px;
+    left: 185px;
 }
 ul.nav {
     margin: 3px 0 0 0;
@@ -933,12 +911,11 @@ a.button:hover {
 .pagehead.repohead h1 {
     color: #666;
     margin-bottom: 15px;
-    padding-left: 23px;
     background-repeat: no-repeat;
     background-position: 0 50%;
 }
 .pagehead.repohead.vis-public h1 {
-    background-image: url(/images/icons/public.png);
+    
 }
 .pagehead.repohead.vis-private h1 {
     background-image: url(/images/icons/private.png);
@@ -1006,14 +983,22 @@ a.button:hover {
     margin: 0;
     float: right;
     position: relative;
-    top: -45px;
+    top: -55px;
     right: 0;
 }
 .pagehead.repohead ul.actions {
-    top: -45px;
+    top: -55px;
     padding: 5px 0 5px 20px;
     background: url(/images/modules/pagehead/actions_fade.png) 0 0 no-repeat;
     right: 0;
+}
+.pagehead.repohead ul.actions li.clock {
+    position: relative;
+    font-size: 30px;
+    color: #ccc;
+}
+.pagehead.repohead ul.actions li.clock span {
+    color: #666;
 }
 .pagehead.repohead.vis-private ul.actions {
     background-image: url(/images/modules/pagehead/actions_fade-yellow.png);
@@ -1401,6 +1386,9 @@ ul.repo-stats li.forks.forked a {
 .news h1 {
     margin-bottom: 0;
 }
+.news .instructions {
+    margin: 0 0 10px 10px;
+}
 #dashboard .repos {
     float: right;
     clear: right;
@@ -1458,6 +1446,7 @@ ul.repo-stats li.forks.forked a {
 dl.form dd input[type=text],dl.form dd input[type=password] {
     margin-right: 5px;
     margin-left: 10px;
+    margin-top: 5px;
     font-size: 14px;
     width: 538px;
     padding: 5px;
@@ -1476,6 +1465,13 @@ ul.repositories>li.simple {
     padding-bottom: 8px;
     margin: 10px 0 3px 10px;
     width: 250px;
+}
+ul.repositories>li.simple img {
+    float: left;
+    height: 20px;
+    top: -2px;
+    position: relative;
+    display: none;
 }
 ul.repositories>li.correct {
     background-color: #ddffdd;
