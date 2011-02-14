@@ -27,3 +27,8 @@
 	- perhaps cleaner would be something like github's little commit dots, one for each slot and a set for each player, that are gradually filled in as players answer questions.
 - login for users, stats, etc.
 - can RAILS handle all these concurrent connections? How to scale?
+- first blood (fps game mechanics) / badges for end of match / flawless victory! (first to answer every question)
+- calling out a tough question (~wager)
+- blanking out other people's questions / fuck with their typing
+- daily doubles
+- party mode / matchmaking
