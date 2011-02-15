@@ -26,10 +26,10 @@ Quizdash::Application.routes.draw do
   #   end
 
   # Sample resource route with sub-resources:
-  #   resources :products do
+     resources :quizzes do
   #     resources :comments, :sales
-  #     resource :seller
-  #   end
+       resource :questions
+     end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do

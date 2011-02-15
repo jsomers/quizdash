@@ -1,0 +1,47 @@
+<%= form_for @quiz do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	
+	<%= f.label :instructions %>
+	<%= f.text_area :instructions %>
+
+	<div id="questions">
+		<div class="question">
+		<% f.fields_for :questions do |question_form| %>
+			<%= question_form.label :prompt %>
+			<%= question_form.text_field :prompt %>
+		
+			<%= question_form.label :permissible_answers %>
+			<%= question_form.text_field :permissible_answers %>
+		<% end %>
+		</div>
+	</div>
+	
+	<a href="#" id="add_question">Add a question</a>
+	
+	<%= f.submit "Submit" %>
+<% end %>
+
+<script type="text/javascript">
+
+	q_count = 0;
+	$(document).ready(function() {
+		$("#add_question").click(function() {
+			div = $(".question:eq(0)").clone();
+			q_count += 1;
+			div.find("label").each(function(i, e) {
+				var curr_for = $(e).attr("for");
+				$(e).attr("for", curr_for.replace("0", q_count));
+			});
+			
+			div.find("input").each(function(i, e) {
+				var curr_id = $(e).attr("id");
+				$(e).attr("id", curr_id.replace("0", q_count));
+				var curr_name = $(e).attr("name");
+				$(e).attr("name", curr_name.replace("0", q_count));
+			});
+			
+			div.appendTo($("#questions"));
+		});
+	});
+</script>
