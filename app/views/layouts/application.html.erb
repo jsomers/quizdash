@@ -38,28 +38,23 @@
 					</ul> 
 				</div><!-- /.userbox --> 
 
-			</div><!-- /#header --> 
+			</div><!-- /#header -->
 
 			<div class="site"> 
 				<div class="pagehead repohead vis-public">
 					<div class="title-actions-bar">
 		        		<h1>
-		          			<a href="/">quizzes</a> &rarr; <a href="/jsomers">words</a> &rarr; <a href="https://github.com/jsomers/quizdash">fill in the blank</a> &rarr; <strong><a href="https://github.com/jsomers/quizdash">6-letters</a></strong>
+							<%= yield :h1 %>
 		        		</h1>
 
 						<ul class="actions">
-							<li class="clock">
-								There is <span>01:56</span> left
-							</li>
+							<%= yield :top_right %>
 		    			</ul>
 		      		</div><!-- /.title-actions-bar --> 
 				</div><!-- /.pagehead --> 
 
-				<div id="dashboard"> 
-		  			<div class="news">
-						<%= render "sandbox/inputs" %>
-					</div>
-					<%= render "sandbox/leaderboard" %>
+				<div id="dashboard">
+		  			<%= yield %>
 				</div><!-- /#dashboard --> 
 			</div><!-- /.site --> 
  

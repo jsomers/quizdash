@@ -1,5 +1,4 @@
 class SandboxController < ApplicationController
-  def land
-    
+  def quiz
   end
 end

@@ -1,0 +1,15 @@
+<% content_for :h1 do %>
+	<a href="/">quizzes</a> &rarr; <a href="/jsomers">words</a> &rarr; <a href="https://github.com/jsomers/quizdash">fill in the blank</a> &rarr; <strong><a href="https://github.com/jsomers/quizdash">6-letters</a></strong>
+<% end %>
+
+<% content_for :top_right do %>
+	<li class="clock">
+		There is <span>01:56</span> left
+	</li>
+<% end %>
+
+<div class="news">
+	<%= render "sandbox/inputs" %>
+</div>
+	
+	<%= render "sandbox/leaderboard" %>
