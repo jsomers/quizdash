@@ -527,7 +527,7 @@ ul.big-actions li {
 #header .logo img {
     position: absolute;
     top: 2px;
-    left: 185px;
+    left: 15px;
 }
 ul.nav {
     margin: 3px 0 0 0;
@@ -995,10 +995,10 @@ a.button:hover {
 .pagehead.repohead ul.actions li.clock {
     position: relative;
     font-size: 30px;
-    color: #ccc;
+    color: #ffcccc;
 }
 .pagehead.repohead ul.actions li.clock span {
-    color: #666;
+    color: #ff5544;
 }
 .pagehead.repohead.vis-private ul.actions {
     background-image: url(/images/modules/pagehead/actions_fade-yellow.png);
@@ -1369,6 +1369,7 @@ ul.repo-stats li.forks.forked a {
 #dashboard {
     margin-top: -10px;
     overflow: hidden;
+    min-height: 750px;
 }
 #dashboard h1 {
     font-size: 160%;
