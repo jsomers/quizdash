@@ -21,8 +21,8 @@
 		<div class="question">
 		<% f.fields_for :questions do |question_form| %>
 		<dl class="form questions">
-			<dd class="half"><%= question_form.text_field :prompt, {:placeholder => "Prompt/hint (optional)"} %></dd>
-			<dd class="half"><%= question_form.text_field :permissible_answers, {:placeholder => "Permissible answers, separated by commas.", :style => "width: 290px;"} %></dd>
+			<dd class="half"><%= question_form.text_field :prompt, {:placeholder => "Prompt/hint (optional)", :class => "prompt"} %></dd>
+			<dd class="half"><%= question_form.text_field :permissible_answers, {:placeholder => "Permissible answers, separated by commas.", :style => "width: 290px;", :class => "permissibles"} %></dd>
 		</dl>
 		<% end %>
 		<br><br><br>
@@ -34,37 +34,49 @@
 	
 	<br>
 	<div class="form-actions">
-	        <button type="submit" class="classy js-oneclick">
-	          <span>Submit Quiz</span>
-	        </button>
-	      </div>
+		<button type="submit" class="classy js-oneclick" style="margin-left: 462px;">
+			<span>Submit Quiz</span>
+		</button>
+	</div>
 <% end %>
 
 <script type="text/javascript">
 	q_count = 0;
+	
+	add_question = function() {
+		div = $(".question:eq(0)").clone().addClass("next");
+		q_count += 1;
+		div.find("label").each(function(i, e) {
+			var curr_for = $(e).attr("for");
+			$(e).attr("for", curr_for.replace("0", q_count));
+		});
+		
+		div.find("input").each(function(i, e) {
+			var curr_id = $(e).attr("id");
+			$(e).attr("id", curr_id.replace("0", q_count));
+			var curr_name = $(e).attr("name");
+			$(e).attr("name", curr_name.replace("0", q_count));
+		});
+		
+		$("<a href=\"#\" class=\"remove_question\">(rm)</a>").insertAfter(div.find(".questions"))
+		div.appendTo($("#questions"));
+	}
+	
 	$(document).ready(function() {
 		$("#add_question").click(function() {
-			div = $(".question:eq(0)").clone().addClass("next");
-			q_count += 1;
-			div.find("label").each(function(i, e) {
-				var curr_for = $(e).attr("for");
-				$(e).attr("for", curr_for.replace("0", q_count));
-			});
-			
-			div.find("input").each(function(i, e) {
-				var curr_id = $(e).attr("id");
-				$(e).attr("id", curr_id.replace("0", q_count));
-				var curr_name = $(e).attr("name");
-				$(e).attr("name", curr_name.replace("0", q_count));
-			});
-			
-			$("<a href=\"#\" class=\"remove_question\">[remove]</a>").insertAfter(div.find(".questions"))
-			div.appendTo($("#questions"));
-			//$("<br><br><br>").appendTo($("#questions"));
+			add_question();
 		});
 		
 		$(".remove_question").live("click", function() {
 			$(this).parent().remove();
+		})
+		
+		$(".permissibles").live("keydown", function(e) {
+			if (e.keyCode == "9" || e.keyCode == "13") {
+				add_question();
+				$(".question:last dd:eq(0) input").focus();
+				return false;
+			}
 		})
 	});
 </script>
