@@ -1,4 +1,11 @@
-- editing quizzes (make sure to use delete checkbox hooks thing)
+- quiz and question model validations and form errors
+- ENTER key behavior in text boxes (catch key event and do a focus or something (maybe nothing) if not last input)
+
+- refactor, prune, and clean
+
+- hook up juggernaut
+- play with data shifting around
+- get individual game working independently of game room
 
 - automatically generating quizzes from a subset of the questions tied to that quiz. randomly select them or choose cleverly.
 - matchmaking options? discuss with freedman and silber.

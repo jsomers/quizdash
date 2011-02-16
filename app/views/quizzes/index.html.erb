@@ -1,0 +1,7 @@
+<% content_for :h1 do %>
+	All quizzes
+<% end %>
+
+<% @quizzes.each do |q| %>
+	<a href="/quizzes/edit/<%= q.id %>"><%= q.title %> (<%= q.questions.count %> questions)</a><br>
+<% end %>
