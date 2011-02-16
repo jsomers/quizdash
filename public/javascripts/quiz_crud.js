@@ -49,5 +49,9 @@ $(document).ready(function() {
 			    return false;
 		    }
 		}
+	});
+	
+	$("#quiz_title").keyup(function() {
+	    $("h1 em").html( $(this).val() );
 	})
 });
