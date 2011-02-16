@@ -17,9 +17,17 @@ class QuizzesController < ApplicationController
   end
   
   def edit
+    @quiz = Quiz.find(params[:id])
   end
   
   def update
+    @quiz = Quiz.find(params[:id])
+    @quiz.attributes = params[:quiz]
+    if @quiz.save
+      redirect_to @quiz
+    else
+      render :action => :edit
+    end
   end
 
 end

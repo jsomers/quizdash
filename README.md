@@ -1,5 +1,4 @@
 - editing quizzes (make sure to use delete checkbox hooks thing)
-- style adding quizzes (remove new question just hides element rather than embedding _delete param)
 
 - automatically generating quizzes from a subset of the questions tied to that quiz. randomly select them or choose cleverly.
 - matchmaking options? discuss with freedman and silber.
