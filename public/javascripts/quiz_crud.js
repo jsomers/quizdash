@@ -17,7 +17,7 @@ add_question = function() {
 	});
 	
 	div.find("a").remove();
-	$("<a href=\"#\" class=\"remove_question\">(rm)</a>").insertAfter(div.find(".questions"))
+	$("<a href=\"#\" class=\"remove_question\" tabindex=\"-1\">(rm)</a>").insertAfter(div.find(".questions"))
 	div.appendTo($("#questions"));
 }
 
@@ -43,9 +43,11 @@ $(document).ready(function() {
 	
 	$(".permissibles").live("keydown", function(e) {
 		if (e.keyCode == "9" || e.keyCode == "13") {
-			add_question();
-			$(".question:last dd:eq(0) input").focus();
-			return false;
+		    if ( $(this).attr("id") == $(".permissibles:last").attr("id") ) {
+			    add_question();
+			    $(".question:last dd:eq(0) input").focus();
+			    return false;
+		    }
 		}
 	})
 });

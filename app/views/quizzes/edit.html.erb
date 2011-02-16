@@ -22,8 +22,8 @@
 		<div class="question next">
 			<dl class="form questions">
 				<dd class="half"><%= question_form.text_field :prompt, {:placeholder => "Prompt/hint (optional)", :class => "prompt"} %></dd>
-				<dd class="half"><%= question_form.text_field :permissible_answers, {:placeholder => "Permissible answers, separated by commas.", :style => "width: 290px;", :class => "permissibles"} %></dd>
-				<a href="#" class="remove_existing_question" style="float: left;">(rm)</a>
+				<dd class="half"><%= question_form.text_field :permissible_answers, {:placeholder => "Permissible answers, separated by commas.", :style => "width: 290px;", :class => "permissibles", :value => question_form.object.permissible_answers.join(", ")} %></dd>
+				<a href="#" class="remove_existing_question" style="float: left;" tabindex="-1">(rm)</a>
 			</dl>
 		<br><br><br>
 		</div>
