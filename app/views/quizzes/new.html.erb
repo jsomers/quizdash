@@ -1,33 +1,50 @@
-<%= form_for @quiz do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-	
-	<%= f.label :instructions %>
-	<%= f.text_area :instructions %>
+<% content_for :h1 do %>
+	Create a new quiz
+<% end %>
 
+<%= form_for @quiz do |f| %>
+	<dl class="form">
+		<dt><%= f.label :title %></dt>
+		<dd><%= f.text_field :title, {:placeholder => "\"U.S. Capitals,\" e.g."} %></dd>
+	</dl><br>
+	
+	<dl class="form">
+		<dt><%= f.label :instructions, "Special Instructions" %> <small style="font-weight:normal">(optional)</dt>
+		<dd><%= f.text_area :instructions %></dd>
+	</dl><br>
+	
+	<dl class="form">
+		<dt>Questions</dt>
+	</dl>
+	
 	<div id="questions">
 		<div class="question">
 		<% f.fields_for :questions do |question_form| %>
-			<%= question_form.label :prompt %>
-			<%= question_form.text_field :prompt %>
-		
-			<%= question_form.label :permissible_answers %>
-			<%= question_form.text_field :permissible_answers %>
+		<dl class="form questions">
+			<dd class="half"><%= question_form.text_field :prompt, {:placeholder => "Prompt/hint (optional)"} %></dd>
+			<dd class="half"><%= question_form.text_field :permissible_answers, {:placeholder => "Permissible answers, separated by commas.", :style => "width: 290px;"} %></dd>
+		</dl>
 		<% end %>
+		<br><br><br>
 		</div>
+		
 	</div>
 	
-	<a href="#" id="add_question">Add a question</a>
+	<a href="#" id="add_question">+ Add a question</a><br>
 	
-	<%= f.submit "Submit" %>
+	<br>
+	<div class="form-actions">
+	        <button type="submit" class="classy js-oneclick">
+	          <span>Submit Quiz</span>
+	        </button>
+	      </div>
 <% end %>
 
 <script type="text/javascript">
-
 	q_count = 0;
 	$(document).ready(function() {
 		$("#add_question").click(function() {
-			div = $(".question:eq(0)").clone();
+			div = $(".question:eq(0)").clone().addClass("next");
 			q_count += 1;
 			div.find("label").each(function(i, e) {
 				var curr_for = $(e).attr("for");
@@ -41,7 +58,13 @@
 				$(e).attr("name", curr_name.replace("0", q_count));
 			});
 			
+			$("<a href=\"#\" class=\"remove_question\">[remove]</a>").insertAfter(div.find(".questions"))
 			div.appendTo($("#questions"));
+			//$("<br><br><br>").appendTo($("#questions"));
 		});
+		
+		$(".remove_question").live("click", function() {
+			$(this).parent().remove();
+		})
 	});
 </script>
