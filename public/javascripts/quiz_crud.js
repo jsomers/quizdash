@@ -1,27 +1,26 @@
-q_count = 0;
-
 add_question = function() {
-	div = $(".question:eq(0)").clone().addClass("next");
-	q_count += 1;
-	div.find("label").each(function(i, e) {
-		var curr_for = $(e).attr("for");
-		$(e).attr("for", curr_for.replace("0", q_count));
-	});
+    q_count += 1;
+	div = $(".question:eq(0)").clone()
+	    .addClass("next") // Used to keep the new question DIVs spaced correctly.
 	
+	// Plug a unique auto-incremented # into the id and name params to prevent conflicts.
 	div.find("input").each(function(i, e) {
-		var curr_id = $(e).attr("id");
-		$(e).attr("id", curr_id.replace("0", q_count));
-		var curr_name = $(e).attr("name");
-		$(e).attr("name", curr_name.replace("0", q_count));
-		$(e).val("");
+        var id = $(this).attr("id").replace(/\d/, q_count),
+            nm = $(this).attr("name").replace(/\d/, q_count);
+		$(e).attr("id", id).attr("name", nm).val("");
 	});
 	
-	div.find("a").remove();
-	$("<a href=\"#\" class=\"remove_question\" tabindex=\"-1\">(rm)</a>").insertAfter(div.find(".questions"))
-	div.appendTo($("#questions"));
+	div.find("a").remove(); // Remove old (rm) links because they have the wrong class.
+	$("<a/>").html("(rm)").attr("href", "#").addClass("remove_question") // Replace.
+	    .attr("tabindex", "-1")
+	    .insertAfter( div.find(".questions") )
+	
+	div.appendTo( $("#questions") );
 }
 
 $(document).ready(function() {
+    q_count = $(".question").length; // Global count used to generate unique "name" and "id" arguments.
+	
 	$("#add_question").click(function() {
 		add_question();
 		return false;
@@ -32,11 +31,13 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	// We can't just hide these. We need to insert a hidden input that tells the server
+	// to delete the question.
 	$(".remove_existing_question").live("click", function() {
-        var qid = $(this).parent().find("dd input:first").attr("id").split("_")[3]
-        $("<input type='hidden' name='quiz[questions_attributes][" + qid + "][_destroy]' value='1'/>")
-            .appendTo($("form"));
-        console.log( $(this).parent().parent() );
+        var qid = $(this).parent().find("input").attr("id").split("_")[3];
+        $("<input/>").attr("type", "hidden").attr("value", "1")
+            .attr("name", "quiz[questions_attributes][" + qid + "][_destroy]")
+            .appendTo( $("form") );
 		$(this).parent().parent().remove();
 		return false;
 	});

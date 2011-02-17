@@ -21,8 +21,19 @@
 		<% f.fields_for :questions do |question_form| %>
 		<div class="question next">
 			<dl class="form questions">
-				<dd class="half"><%= question_form.text_field :prompt, {:placeholder => "Prompt/hint (optional)", :class => "prompt"} %></dd>
-				<dd class="half"><%= question_form.text_field :permissible_answers, {:placeholder => "Permissible answers, separated by commas.", :style => "width: 290px;", :class => "permissibles", :value => question_form.object.permissible_answers.join(", ")} %></dd>
+				<dd class="half">
+					<%= question_form.text_field :prompt, {
+						:placeholder => "Prompt/hint (optional)",
+						:class => "prompt"
+					  } %>
+					</dd>
+				<dd class="half rt">
+					<%= question_form.text_field :permissible_answers, {
+						:placeholder => "Permissible answers, separated by commas.", 
+						:class => "permissibles", 
+						:value => question_form.object.permissible_answers.join(", ")
+					  } %>
+				</dd>
 				<a href="#" class="remove_existing_question" style="float: left;" tabindex="-1">(rm)</a>
 			</dl>
 		<br><br><br>
@@ -35,7 +46,7 @@
 	
 	<br>
 	<div class="form-actions">
-		<button type="submit" class="classy js-oneclick" style="margin-left: 462px;">
+		<button type="submit" class="classy js-oneclick">
 			<span>Save Quiz</span>
 		</button>
 	</div>

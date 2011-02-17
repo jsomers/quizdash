@@ -83,7 +83,7 @@ a.action {
 .sparkline {
     display: none;
 }
-.right {
+.right, .fr {
     float: right;
 }
 .left {
@@ -1534,7 +1534,7 @@ div.righterly {
     font-size: 12px;
     margin: 10px;
     width: 58.5%;
-    height: 200px;
+    height: 100px;
     border: 1px solid #ccc;
     border-right-color: #ddd;
     border-bottom-color: #ddd;
@@ -1548,16 +1548,16 @@ dl.form dd.half input[type="text"] {
     font-size: 12.5px;
     margin-left: 3px;
 }
-
+dl.form dd.half.rt input[type="text"] {
+    width: 290px;
+}
 dl.questions {
     margin-left: 7px;
 }
-
 .submit_button {
     display: block;
     margin: 40px 0 0 10px;
 }
-
 .question.next {
     margin-top: -10px;
 }
@@ -1565,11 +1565,9 @@ dl.questions {
     margin-left: 10px;
     font-size: 12px;
 }
-
 input.next {
     margin-top: 0px;
 }
-
 .remove_question, .remove_existing_question {
     position: relative;
     top: 10px;
@@ -1577,4 +1575,7 @@ input.next {
     font-size: 12.4px;
     color: #ff7766;
     font-weight: bold;
+}
+#dashboard form button {
+    margin-left: 460px;
 }

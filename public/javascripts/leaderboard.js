@@ -84,10 +84,10 @@ new_leaderboard = function(leaderboard) {
 	// Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]],
 	// updates the DOM with the new information, and animates the transitions.
 	
-	// TODO: Animate the transitions?
+	// TODO: Animate (e.g., slide) the transitions?
 	// TODO: Color of background highlight should be based on position.
 	// < 5 = red, 3-5 = yellow, 2 = blue, 1 = green.
-	// TODO: Maybe the dots themselves should flash?
+	// TODO: Maybe the dots themselves should flash? Change blindness?
 	
 	var old = current_leaderboard()
 	$("#repo_listing").empty()
