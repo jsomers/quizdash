@@ -1,0 +1,53 @@
+<% content_for :h1 do %>
+	Editing quiz: <em><%= @quiz.title %></em>
+<% end %>
+
+<%= form_for @quiz do |f| %>
+	<dl class="form">
+		<dt><%= f.label :title %></dt>
+		<dd><%= f.text_field :title, {:placeholder => "\"U.S. Capitals,\" e.g."} %></dd>
+	</dl><br>
+	
+	<dl class="form">
+		<dt><%= f.label :instructions, "Special Instructions" %> <small style="font-weight:normal">(optional)</dt>
+		<dd><%= f.text_area :instructions %></dd>
+	</dl><br>
+	
+	<dl class="form">
+		<dt>Questions</dt>
+	</dl>
+	
+	<div id="questions" style="margin-top: 10px;">
+		<% f.fields_for :questions do |question_form| %>
+		<div class="question next">
+			<dl class="form questions">
+				<dd class="half">
+					<%= question_form.text_field :prompt, {
+						:placeholder => "Prompt/hint (optional)",
+						:class => "prompt"
+					  } %>
+					</dd>
+				<dd class="half rt">
+					<%= question_form.text_field :permissible_answers, {
+						:placeholder => "Permissible answers, separated by commas.", 
+						:class => "permissibles", 
+						:value => question_form.object.permissible_answers.join(", ")
+					  } %>
+				</dd>
+				<a href="#" class="remove_existing_question" style="float: left;" tabindex="-1">(rm)</a>
+			</dl>
+		<br><br><br>
+		</div>
+		<% end %>
+		
+	</div>
+	
+	<a href="#" id="add_question">+ Add a question</a><br>
+	
+	<br>
+	<div class="form-actions">
+		<button type="submit" class="classy js-oneclick">
+			<span>Save Quiz</span>
+		</button>
+	</div>
+<% end %>

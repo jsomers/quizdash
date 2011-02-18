@@ -1,3 +1,17 @@
+- quiz and question model validations and form errors
+- ENTER key behavior in text boxes (catch key event and do a focus or something (maybe nothing) if not last input)
+- shouldn't be able to delete all questions when editing a quiz
+
+- refactor, prune, and clean
+
+- hook up juggernaut
+- play with data shifting around
+- get individual game working independently of game room
+
+- automatically generating quizzes from a subset of the questions tied to that quiz. randomly select them or choose cleverly.
+- matchmaking options? discuss with freedman and silber.
+- sessions -> migrate to accounts (pre-populate signup with chosen handle and save the session stats)
+
 - get a version that works up and hosted quickly
 - use juggernaut
 - each game is a channel

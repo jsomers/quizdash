@@ -17,28 +17,7 @@
 	
 	<body class="logged_in page-dashboard">
 		<div class="" id="main">
-			<div id="header" class="true"> 
-				<a class="logo boring" href="/"> 
-					<img src="/images/logo.png" class="default" alt="quizdash" /> 
-				</a> 
-
-				<div class="userbox"> 
-					<div class="avatarname"> 
-						<a href="https://github.com/jsomers"><img src="https://secure.gravatar.com/avatar/4cd969f7afb5655fe00423c7ac80743f?s=140&d=https://github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" alt="" width="20" height="20"  /></a> 
-						<a href="https://github.com/jsomers" class="name">jsomers</a> 
-					</div> 
-					<ul class="usernav"> 
-						<li><a href="https://github.com/">My stats</a></li> 
-						<li> 
-							<a href="https://github.com/inbox">My quizzes</a> 
-							<a href="https://github.com/inbox" class="unread_count ">0</a> 
-						</li> 
-						<li><a href="https://github.com/account">Account Settings</a></li> 
-						<li><a href="/logout">Log Out</a></li> 
-					</ul> 
-				</div><!-- /.userbox --> 
-
-			</div><!-- /#header -->
+			<%= render :partial => "sandbox/header" %>
 
 			<div class="site"> 
 				<div class="pagehead repohead vis-public">
@@ -57,105 +36,9 @@
 		  			<%= yield %>
 				</div><!-- /#dashboard --> 
 			</div><!-- /.site --> 
- 
-			<div id="footer" class="clearfix"> 
-				<div class="site"> 
-					<div class="sponsor"> 
-						<a href="http://www.jsomers.net/" class="logo"> 
-		 					<img alt="jsomers.net" src="/images/big_dino.png" style="height: 50px" /> 
-						</a> 
-						Powered by <a href="http://www.jsomers.net">James Somers</a> <br/>of <a href="http://www.jimbojeopardy.com">Jimbo Jeopardy!</a>
-					</div> 
-
-					<ul class="links"> 
-						<li class="blog"><a href="https://github.com/blog">Blog</a></li> 
-						<li><a href="https://github.com/contact">Contact</a></li> 
-						<li><a href="http://develop.github.com">About</a></li> 
-						<li><a href="http://status.github.com">API</a></li> 
-					</ul> 
-					<ul class="sosueme"> 
-						<li class="main">&copy; 2011 <span id="_rrt" title="0.10439s from fe5.rs.github.com">James Somers.</span> All rights reserved.</li> 
-						<li><a href="/site/terms">Terms of Service</a></li> 
-						<li><a href="/site/privacy">Privacy</a></li> 
-						<li><a href="https://github.com/security">Security</a></li> 
-					</ul> 
-				</div><!-- /.site --> 
-			</div><!-- /#footer --> 
-
-			<div class="locales"> 
-				<div class="site"> 
-					<ul class="choices clearfix limited-locales"> 
-		   				<li><span class="current">English</span></li> 
-		       			<li><a rel="nofollow" href="?locale=de">Deutsch</a></li> 
-		       			<li><a rel="nofollow" href="?locale=fr">Français</a></li> 
-		       			<li><a rel="nofollow" href="?locale=ja">日本語</a></li> 
-		       			<li><a rel="nofollow" href="?locale=pt-BR">Português (BR)</a></li> 
-		       			<li><a rel="nofollow" href="?locale=ru">Русский</a></li> 
-		       			<li><a rel="nofollow" href="?locale=zh">中文</a></li> 
-		   				<li class="all">
-							<a href="#" class="minibutton btn-forward js-all-locales">
-								<span><span class="icon"></span>See all available languages</span>
-							</a>
-						</li> 
-					</ul> 
-				</div> 
-				<div class="fade"></div> 
-			</div><!-- /.locales --> 
+			
+			<%= render :partial => "sandbox/footer" %>
+			
 		</div><!-- /#main --> 
-		
-<script type="text/javascript">
-	// Like client.js in the mindy-node:
-	var CONFIG = {
-		nick: "jsomers",
-		id: null,
-		focus: true
-	};
-	
-	// TODO: How are Quiz objects structured?
-	// => Probably have a Quiz --> Question relationship.
-	// => Might want to build the Quiz adding admin interface first.
-	// => Placing quizzes in an extensible tree of categories.
-	
-	// TODO: What does a session object look like?
-	// => Store in Redis?
-	// => Don't worry about how it's created (room stuff), just use one.
-	// => How to store on client side? Like CONFIG? See mindy.
-	
-	// TODO: How to end a game? What is stored?
-	
-	// TODO: Scramble the answers?
-	// => Come up with a simple random offset between 3 and 100. Call it f.
-	// => Scramble the answers according to f on the server, and send those
-	// => AND f to the client. On the keyup event, scramble the input using f
-	// => and correlate.
-	
-	answers = {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}
-	seen = {}
-	
-	function mark_correct(q, ans) {
-		var q = $(".repositories > li[qid=" + q + "]").addClass("correct");
-		q.find("h3").html(ans).removeClass("hint");
-		q.find("ul.repo-stats").effect("highlight", {color: "yellow"}, 500);
-		q.effect("highlight", {color: "yellow"}, 500);
-		q.find("img").show();
-	}
-	
-	$("#answer").keyup(function() {
-		var ans = $("#answer").val().toLowerCase();
-		var qid = answers[ans];
-		if (typeof(qid) != "undefined" && typeof(seen[qid]) == "undefined") {
-			mark_correct(qid, ans);
-			$("#answer").val("");
-			seen[qid] = true;
-			// TODO: Tell the server I got it right.
-		};
-	});
-	
-	// Step 3:
-	// Rename shit and clean up a bit.
-	// Deillegalize template.
-	// Merge into master and start hacking juggernaut, data, etc.
-
-</script>
 	</body> 
 </html>
