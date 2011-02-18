@@ -15,7 +15,7 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.new(params[:quiz])
     if @quiz.save
-      redirect_to @quiz
+      redirect_to :action => :index
     else
       render :action => :new
     end
@@ -29,10 +29,15 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
     @quiz.attributes = params[:quiz]
     if @quiz.save
-      redirect_to @quiz
+      redirect_to :action => :index
     else
       render :action => :edit
     end
   end
-
+  
+  def destroy
+    @quiz = Quiz.find(params[:id])
+    @quiz.destroy
+    render :text => "OK"
+  end
 end

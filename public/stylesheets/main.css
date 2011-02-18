@@ -1579,3 +1579,6 @@ input.next {
 #dashboard form button {
     margin-left: 460px;
 }
+.remove_quiz {
+    color: #ff7766;
+}

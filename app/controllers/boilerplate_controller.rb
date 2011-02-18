@@ -1,0 +1,2 @@
+class BoilerplateController < ApplicationController
+end

@@ -3,5 +3,23 @@
 <% end %>
 
 <% @quizzes.each do |q| %>
-	<a href="/quizzes/edit/<%= q.id %>"><%= q.title %> (<%= q.questions.count %> questions)</a><br>
+	<div class="quiz_list" qid="<%= q.id %>">
+		<a href="#" class="remove_quiz" qid="<%= q.id %>">[x]</a> <a href="/quizzes/edit/<%= q.id %>"><%= q.title %> (<%= q.questions.count %> questions)</a><br>
+	</div>
 <% end %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".remove_quiz").click(function() {
+			var qid = $(this).attr("qid");
+			var confirmed = confirm("Are you sure you'd like to delete quiz " + qid + "?");
+			if (confirmed) {
+				$.post("/quizzes/destroy", {id: qid},
+					function(ret) {
+						if (ret == "OK") $(".quiz_list[qid=" + qid + "]").remove();
+				})
+			}
+			return false;
+		})
+	})
+</script>
