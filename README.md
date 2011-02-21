@@ -3,11 +3,22 @@
 - shouldn't be able to delete all questions when editing a quiz
 - polluting namespace with this javascript loaded via application.html.erb?
 
+- gem bundle?
+
 - refactor, prune, and clean
 
-- hook up juggernaut
+- to start juggernaut:
+	1. Start redis: redis-server ~/projects/redis-2.0.4/redis.conf
+	2. Start juggernaut: cd ~/juggernaut; sudo node server.js
+	3. Head to /jugtest/land.
 - play with data shifting around
 - get individual game working independently of game room
+	- without time element (but keep it in mind). basics:
+		1. Show up and choose handle. Populates leaderboard entry.
+		2. Wait for other players to do the same.
+		3. Event when I enter a correct response.
+		4. Event when that pushes to the others.
+	- with time element
 
 - automatically generating quizzes from a subset of the questions tied to that quiz. randomly select them or choose cleverly.
 - matchmaking options? discuss with freedman and silber.
