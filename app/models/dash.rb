@@ -4,7 +4,7 @@ class Dash
   def initialize(id, board=nil)
     @id = id
     @board = (board ? board : [])
-    $redis.set self.id, board.to_json
+    $redis.set self.id, @board.to_json
   end
   
   def save(board)

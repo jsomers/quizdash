@@ -24,8 +24,6 @@ var CONFIG = {
 // => and correlate.
 
 $(document).ready(function() {
-    answers = {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}
-    seen = {}
 
     function mark_correct(q, ans) {
     	var q = $(".repositories > li[qid=" + q + "]").addClass("correct");

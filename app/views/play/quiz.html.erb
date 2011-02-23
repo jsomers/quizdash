@@ -13,15 +13,34 @@
 	<%= javascript_include_tag "http://localhost:8080/application.js" %>
 
 	<script type="text/javascript">
-		var jug = new Juggernaut;
-		var dash = {};
+	$(document).ready(function() {
+		jug = new Juggernaut;
+		dash = {};
+		
+		answers = <%= raw(@quiz.answer_map.to_json) %>;
+		seen = {};
 
 		jug.on("connect", function() {
 			$.get("/dashes/get/<%= @dash_hash %>", 
 				function(ret) {
 					dash = JSON.parse(ret);
+					new_leaderboard(dash.board);
 				}
 			)
+			
+			// Build slot:
+			// => name
+			var name = prompt("Enter your handle, please", "zero_cool");
+			// => binary string
+			var pointices = <%= [0] * @quiz.answer_map.values.uniq.length %>;
+			var slot = [name, pointices];
+			$.post("/dashes/add_slot/", 
+				{dash_id: "<%= @dash_hash %>", slot: JSON.stringify(slot)},
+				function(ret) {
+					dash = JSON.parse(ret);
+					new_leaderboard(dash.board);
+					console.log(dash.board);
+				});
 		});
 
 		jug.subscribe("/chats", function(data) {
@@ -35,6 +54,7 @@
 				}
 			)
 		}
+	});
 	</script>
 
 	<ul id="chats">
