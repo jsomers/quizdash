@@ -25,22 +25,21 @@
 				function(ret) {
 					dash = JSON.parse(ret);
 					new_leaderboard(dash.board);
+					
+					CONFIG.nick = prompt("Enter your handle, please", "zero_cool");
+					var pointices = <%= [0] * @quiz.answer_map.values.uniq.length %>;
+					var slot = [CONFIG.nick, pointices];
+
+					$.post("/dashes/add_slot/", 
+						{dash_id: "<%= @dash_hash %>", slot: JSON.stringify(slot)},
+						function(ret) {
+							dash = JSON.parse(ret);
+							append_slot(slot);
+						}
+					);
 				}
 			)
 			
-			// Build slot:
-			// => name
-			var name = prompt("Enter your handle, please", "zero_cool");
-			// => binary string
-			var pointices = <%= [0] * @quiz.answer_map.values.uniq.length %>;
-			var slot = [name, pointices];
-			$.post("/dashes/add_slot/", 
-				{dash_id: "<%= @dash_hash %>", slot: JSON.stringify(slot)},
-				function(ret) {
-					dash = JSON.parse(ret);
-					new_leaderboard(dash.board);
-					console.log(dash.board);
-				});
 		});
 
 		jug.subscribe("/chats", function(data) {
