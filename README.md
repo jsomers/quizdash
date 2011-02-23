@@ -1,4 +1,5 @@
-3. Then make changes by hitting the dash controller via interface hooks and using the Dash#save method.
+1. When an answer goes through, POST the changes via the Dash controller.
+2. When we receive a new object via the juggernaut channel (get the channel settings right, btw), update the leaderboard and the question people counts.
 
 
 - quiz and question model validations and form errors; clear empty questions callback.
