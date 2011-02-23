@@ -1,17 +1,15 @@
 class Dash
-  attr_accessor :id, :content
+  attr_accessor :id, :board
   
-  def initialize(id)
+  def initialize(id, board=nil)
     @id = id
-    @content = {
-      "players" => nil
-    }
-    $redis.set self.id, content.to_json
+    @board = (board ? board : [])
+    $redis.set self.id, board.to_json
   end
   
-  def save(content)
-    @content = content
-    $redis.set self.id, content.to_json
+  def save(board)
+    @board = board
+    $redis.set self.id, board.to_json
     self
   end
   

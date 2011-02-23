@@ -1,6 +1,6 @@
 class PlayController < ApplicationController
   def quiz
-    #@dash = Dash.find(params[:id]) || Dash.new(params[:id])
+    @dash_hash = Digest::MD5.hexdigest(params[:id]).first(10)
   end
   
   def msg

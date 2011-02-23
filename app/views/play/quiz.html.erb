@@ -14,9 +14,14 @@
 
 	<script type="text/javascript">
 		var jug = new Juggernaut;
+		var dash = {};
 
 		jug.on("connect", function() {
-			alert("I'm connected!");
+			$.get("/dashes/get/<%= @dash_hash %>", 
+				function(ret) {
+					dash = JSON.parse(ret);
+				}
+			)
 		});
 
 		jug.subscribe("/chats", function(data) {

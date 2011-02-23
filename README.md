@@ -1,5 +1,3 @@
-1. Create dashes_controller
-2. On connect, grab the Dash object via the dash controller.
 3. Then make changes by hitting the dash controller via interface hooks and using the Dash#save method.
 
 
