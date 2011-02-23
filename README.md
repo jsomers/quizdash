@@ -6,7 +6,7 @@
 - quiz and question model validations and form errors; clear empty questions callback.
 - ENTER key behavior in text boxes (catch key event and do a focus or something (maybe nothing) if not last input)
 - shouldn't be able to delete all questions when editing a quiz
-- polluting namespace with this javascript loaded via application.html.erb?
+- polluting namespace with these javascripts loaded via application.html.erb? Object-ize them?
 
 - gem bundle?
 

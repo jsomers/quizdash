@@ -4,7 +4,7 @@ class Dash
   def initialize(id)
     @id = id
     @content = {
-      "players" => 
+      "players" => nil
     }
     $redis.set self.id, content.to_json
   end

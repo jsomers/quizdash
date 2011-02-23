@@ -1,6 +1,6 @@
 class PlayController < ApplicationController
   def quiz
-    @dash = Dash.find(params[:id]) || Dash.new(params[:id])
+    #@dash = Dash.find(params[:id]) || Dash.new(params[:id])
   end
   
   def msg
