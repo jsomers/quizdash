@@ -13,14 +13,42 @@
 	<%= javascript_include_tag "http://localhost:8080/application.js" %>
 
 	<script type="text/javascript">
-		var jug = new Juggernaut;
+	$(document).ready(function() {
+		jug = new Juggernaut;
+		dash = {};
+		
+		answers = <%= raw(@quiz.answer_map.to_json) %>;
+		seen = {};
+		
+		dash_hash = "<%= @dash_hash %>";
+		quiz_id = "<%= @quiz.id %>";
 
 		jug.on("connect", function() {
-			alert("I'm connected!");
+			$.get("/dashes/get/" + dash_hash, 
+				function(ret) {
+					dash = JSON.parse(ret);
+					new_leaderboard(dash.board);
+					
+					CONFIG.nick = prompt("Enter your handle, please", "zero_cool");
+					var pointices = <%= [0] * @quiz.answer_map.values.uniq.length %>;
+					var slot = [CONFIG.nick, pointices];
+            
+					$.post("/dashes/add_slot/", 
+						{dash_id: dash_hash, slot: JSON.stringify(slot)},
+						function(ret) {
+							dash = JSON.parse(ret);
+							append_slot(slot);
+						}
+					);
+				}
+			)
+			
 		});
 
-		jug.subscribe("/chats", function(data) {
-			$("#chats").append($("<li/>").text(data));
+		jug.subscribe("/" + dash_hash, function(ret) {
+			console.log(ret);
+			dash = JSON.parse(ret);
+			new_leaderboard(dash.board);
 		})
 
 		var s = function(msg) {
@@ -30,6 +58,7 @@
 				}
 			)
 		}
+	});
 	</script>
 
 	<ul id="chats">

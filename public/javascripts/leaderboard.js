@@ -80,6 +80,17 @@ flash = function(cur, old, el, iam) {
 	}
 }
 
+append_slot = function(slot) {
+    var old = current_leaderboard();
+    var i = (old ? Object.keys(old).length : 0);
+    var pos = slot,
+        row = build_row(pos, i);
+    row.li.addClass("me");
+    row.a.append(row.ct).append(row.bar).append(row.name).append(row.place)
+	row.li.append(row.a);
+	$("#repo_listing").append(row.li);
+}
+
 new_leaderboard = function(leaderboard) {
 	// Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]],
 	// updates the DOM with the new information, and animates the transitions.
@@ -90,6 +101,7 @@ new_leaderboard = function(leaderboard) {
 	// TODO: Maybe the dots themselves should flash? Change blindness?
 	
 	var old = current_leaderboard()
+
 	$("#repo_listing").empty()
 
 	for (var i = 0; i < leaderboard.length; i++) {
@@ -101,7 +113,7 @@ new_leaderboard = function(leaderboard) {
 		row.a.append(row.ct).append(row.bar).append(row.name).append(row.place)
 		row.li.append(row.a);
 		$("#repo_listing").append(row.li);
-		
-		flash(i, old[pos[0]]["place"], row.li, iam);
+		if (Object.keys(old).length > 0)
+		    flash(i, old[pos[0]]["place"], row.li, iam);
 	};
 }

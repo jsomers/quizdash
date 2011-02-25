@@ -24,8 +24,6 @@ var CONFIG = {
 // => and correlate.
 
 $(document).ready(function() {
-    answers = {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}
-    seen = {}
 
     function mark_correct(q, ans) {
     	var q = $(".repositories > li[qid=" + q + "]").addClass("correct");
@@ -42,7 +40,12 @@ $(document).ready(function() {
     		mark_correct(qid, ans);
     		$("#answer").val("");
     		seen[qid] = true;
-    		// TODO: Tell the server I got it right.
+    		$.post("/dashes/mark_q/",
+    		    {dash_id: dash_hash, quiz_id: quiz_id, qid: qid, plyr: CONFIG.nick},
+    		    function(ret) {
+                    console.log(ret);
+    		    }
+    		)
     	};
     });
 

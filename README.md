@@ -1,7 +1,16 @@
+Make sure to broadcast the mark_q event to all the players in the channel. Also, be sure to re-sort the leaderboard somewhere.
+
+1. When an answer goes through, POST the changes via the Dash controller.
+2. When we receive a new object via the juggernaut channel (get the channel settings right, btw), update the leaderboard and the question people counts.
+
+Javascripts with erb in them? How about write functions that take pure JS variables and set those variables in an html.erb template. Or just use an html partial.
+
+Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
+
 - quiz and question model validations and form errors; clear empty questions callback.
 - ENTER key behavior in text boxes (catch key event and do a focus or something (maybe nothing) if not last input)
 - shouldn't be able to delete all questions when editing a quiz
-- polluting namespace with this javascript loaded via application.html.erb?
+- polluting namespace with these javascripts loaded via application.html.erb? Object-ize them?
 
 - gem bundle?
 
