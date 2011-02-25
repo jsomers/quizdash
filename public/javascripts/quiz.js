@@ -40,7 +40,13 @@ $(document).ready(function() {
     		mark_correct(qid, ans);
     		$("#answer").val("");
     		seen[qid] = true;
-    		// TODO: Tell the server I got it right.
+    		$.post("/dashes/mark_q/",
+    		    {dash_id: dash_hash, quiz_id: quiz_id, qid: qid, plyr: CONFIG.nick},
+    		    function(ret) {
+    		        dash = JSON.parse(ret);
+					new_leaderboard(dash.board);
+    		    }
+    		)
     	};
     });
 

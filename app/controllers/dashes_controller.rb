@@ -11,4 +11,10 @@ class DashesController < ApplicationController
     d.save(leaderboard)
     render :json => d
   end
+  
+  def mark_q
+    d = Dash.find(params[:dash_id])
+    d.mark_q(params[:quiz_id], params[:plyr], params[:qid])
+    render :json => d
+  end
 end

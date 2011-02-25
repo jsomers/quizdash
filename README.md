@@ -1,5 +1,9 @@
+Make sure to broadcast the mark_q event to all the players in the channel. Also, be sure to re-sort the leaderboard somewhere.
+
 1. When an answer goes through, POST the changes via the Dash controller.
 2. When we receive a new object via the juggernaut channel (get the channel settings right, btw), update the leaderboard and the question people counts.
+
+Javascripts with erb in them? How about write functions that take pure JS variables and set those variables in an html.erb template. Or just use an html partial.
 
 
 - quiz and question model validations and form errors; clear empty questions callback.
