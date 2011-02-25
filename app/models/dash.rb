@@ -7,8 +7,13 @@ class Dash
     $redis.set self.id, @board.to_json
   end
   
+  def sort_board
+    self.board = self.board.sort {|a, b| b[1].count(1) <=> a[1].count(1)}
+  end
+  
   def save(board)
     self.board = board
+    self.sort_board
     $redis.set self.id, board.to_json
     self
   end

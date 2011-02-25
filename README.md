@@ -5,6 +5,7 @@ Make sure to broadcast the mark_q event to all the players in the channel. Also,
 
 Javascripts with erb in them? How about write functions that take pure JS variables and set those variables in an html.erb template. Or just use an html partial.
 
+Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 
 - quiz and question model validations and form errors; clear empty questions callback.
 - ENTER key behavior in text boxes (catch key event and do a focus or something (maybe nothing) if not last input)

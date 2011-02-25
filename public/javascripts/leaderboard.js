@@ -113,7 +113,7 @@ new_leaderboard = function(leaderboard) {
 		row.a.append(row.ct).append(row.bar).append(row.name).append(row.place)
 		row.li.append(row.a);
 		$("#repo_listing").append(row.li);
-		if (old.length)
+		if (Object.keys(old).length > 0)
 		    flash(i, old[pos[0]]["place"], row.li, iam);
 	};
 }

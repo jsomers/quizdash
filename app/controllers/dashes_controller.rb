@@ -15,6 +15,7 @@ class DashesController < ApplicationController
   def mark_q
     d = Dash.find(params[:dash_id])
     d.mark_q(params[:quiz_id], params[:plyr], params[:qid])
-    render :json => d
+    Juggernaut.publish("/#{params[:dash_id]}", d.to_json)
+    render :text => "OK"
   end
 end

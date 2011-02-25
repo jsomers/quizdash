@@ -43,8 +43,7 @@ $(document).ready(function() {
     		$.post("/dashes/mark_q/",
     		    {dash_id: dash_hash, quiz_id: quiz_id, qid: qid, plyr: CONFIG.nick},
     		    function(ret) {
-    		        dash = JSON.parse(ret);
-					new_leaderboard(dash.board);
+                    console.log(ret);
     		    }
     		)
     	};

@@ -45,8 +45,10 @@
 			
 		});
 
-		jug.subscribe("/" + dash_hash, function(data) {
-			$("#chats").append($("<li/>").text(data));
+		jug.subscribe("/" + dash_hash, function(ret) {
+			console.log(ret);
+			dash = JSON.parse(ret);
+			new_leaderboard(dash.board);
 		})
 
 		var s = function(msg) {
