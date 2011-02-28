@@ -1,27 +1,8 @@
-// Like client.js in the mindy-node:
 var CONFIG = {
 	nick: "jsomers",
 	id: null,
 	focus: true
 };
-
-// TODO: How are Quiz objects structured?
-// => Probably have a Quiz --> Question relationship.
-// => Might want to build the Quiz adding admin interface first.
-// => Placing quizzes in an extensible tree of categories.
-
-// TODO: What does a session object look like?
-// => Store in Redis?
-// => Don't worry about how it's created (room stuff), just use one.
-// => How to store on client side? Like CONFIG? See mindy.
-
-// TODO: How to end a game? What is stored?
-
-// TODO: Scramble the answers?
-// => Come up with a simple random offset between 3 and 100. Call it f.
-// => Scramble the answers according to f on the server, and send those
-// => AND f to the client. On the keyup event, scramble the input using f
-// => and correlate.
 
 $(document).ready(function() {
 
@@ -48,9 +29,51 @@ $(document).ready(function() {
     		)
     	};
     });
+    
+    function new_filled_array(len, val) {
+	    var rv = new Array(len);
+	    while (--len >= 0) {
+	        rv[len] = val;
+	    }
+	    return rv;
+	}
+	
+	if (typeof jug !== "undefined") {
+    	jug.on("connect", function() {
+    		$.get("/dashes/get/" + dash_hash, 
+    			function(ret) {
+    				dash = JSON.parse(ret);
+    				new_leaderboard(dash.board);
+				
+    				CONFIG.nick = prompt("Enter your handle, please", "zero_cool");
+    				//CONFIG.nick = "player " + Math.floor(Math.random() * 101);
+    				var pointices = new_filled_array(n_questions, 0);
+    				var slot = [CONFIG.nick, pointices];
+        
+    				$.post("/dashes/add_slot/", 
+    					{dash_id: dash_hash, slot: JSON.stringify(slot)},
+    					function(ret) {
+    						dash = JSON.parse(ret);
+    						append_slot(slot);
+    					}
+    				);
+    			}
+    		)
+		
+    	});
 
-    // Step 3:
-    // Rename shit and clean up a bit.
-    // Deillegalize template.
-    // Merge into master and start hacking juggernaut, data, etc.
+    	jug.subscribe("/" + dash_hash, function(ret) {
+    		console.log(ret);
+    		dash = JSON.parse(ret);
+    		new_leaderboard(dash.board);
+    	})
+	}
+
+	var s = function(msg) {
+		$.post("/play/msg", {txt: msg}, 
+			function(data) {
+				console.log(data);
+			}
+		)
+	}
 })

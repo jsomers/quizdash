@@ -12,6 +12,7 @@
 			if (typeof console == "undefined" || typeof console.log == "undefined")
 			console = { log: function() {} }
 		</script> 
+		<%= yield :extra_head %>
 		<%= javascript_include_tag :all %>
 	</head> 
 	

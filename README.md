@@ -1,40 +1,40 @@
-Make sure to broadcast the mark_q event to all the players in the channel. Also, be sure to re-sort the leaderboard somewhere.
+Javascript namespacing, load order, etc.
 
-1. When an answer goes through, POST the changes via the Dash controller.
-2. When we receive a new object via the juggernaut channel (get the channel settings right, btw), update the leaderboard and the question people counts.
+Be sure to Juggernaut broadcast to the channel when a player joins (we're not doing that now!).
 
-Javascripts with erb in them? How about write functions that take pure JS variables and set those variables in an html.erb template. Or just use an html partial.
+Flash the question red when someone else gets it (and increment the people counter).
 
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
+
+// TODO: How are Quiz objects structured?
+// => Probably have a Quiz --> Question relationship.
+// => Might want to build the Quiz adding admin interface first.
+// => Placing quizzes in an extensible tree of categories.
+
+// TODO: How to end a game? What is stored?
+
+// TODO: Scramble the answers?
+// => Come up with a simple random offset between 3 and 100. Call it f.
+// => Scramble the answers according to f on the server, and send those
+// => AND f to the client. On the keyup event, scramble the input using f
+// => and correlate.
 
 - quiz and question model validations and form errors; clear empty questions callback.
 - ENTER key behavior in text boxes (catch key event and do a focus or something (maybe nothing) if not last input)
 - shouldn't be able to delete all questions when editing a quiz
-- polluting namespace with these javascripts loaded via application.html.erb? Object-ize them?
 
 - gem bundle?
-
-- refactor, prune, and clean
 
 - to start juggernaut:
 	1. Start redis: redis-server ~/projects/redis-2.0.4/redis.conf
 	2. Start juggernaut: cd ~/juggernaut; sudo node server.js
 	3. Head to /jugtest/land.
 - play with data shifting around
-- get individual game working independently of game room
-	- without time element (but keep it in mind). basics:
-		1. Show up and choose handle. Populates leaderboard entry.
-		2. Wait for other players to do the same.
-		3. Event when I enter a correct response.
-		4. Event when that pushes to the others.
-	- with time element
 
 - automatically generating quizzes from a subset of the questions tied to that quiz. randomly select them or choose cleverly.
 - matchmaking options? discuss with freedman and silber.
 - sessions -> migrate to accounts (pre-populate signup with chosen handle and save the session stats)
 
-- get a version that works up and hosted quickly
-- use juggernaut
 - each game is a channel
 - discover channels by browsing
 - abstract away from quiz content

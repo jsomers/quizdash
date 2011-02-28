@@ -1,3 +1,18 @@
+<% content_for :extra_head do %>
+	<%= javascript_include_tag "http://localhost:8080/application.js" %>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			answers = <%= raw(@quiz.answer_map.to_json) %>;
+			n_questions = <%= @quiz.questions.length %>;
+			dash_hash = "<%= @dash_hash %>";
+			quiz_id = "<%= @quiz.id %>";
+			jug = new Juggernaut;
+			seen = {};
+			dash = {};
+		});
+	</script>
+<% end %>
+
 <% content_for :h1 do %>
 	<a href="/">quizzes</a> &rarr; <a href="/jsomers">words</a> &rarr; <a href="https://github.com/jsomers/quizdash">fill in the blank</a> &rarr; <strong><a href="https://github.com/jsomers/quizdash">6-letters</a></strong>
 <% end %>
@@ -10,56 +25,6 @@
 
 <div class="news">
 	<%= render "play/inputs" %>
-	<%= javascript_include_tag "http://localhost:8080/application.js" %>
-
-	<script type="text/javascript">
-	$(document).ready(function() {
-		jug = new Juggernaut;
-		dash = {};
-		
-		answers = <%= raw(@quiz.answer_map.to_json) %>;
-		seen = {};
-		
-		dash_hash = "<%= @dash_hash %>";
-		quiz_id = "<%= @quiz.id %>";
-
-		jug.on("connect", function() {
-			$.get("/dashes/get/" + dash_hash, 
-				function(ret) {
-					dash = JSON.parse(ret);
-					new_leaderboard(dash.board);
-					
-					CONFIG.nick = prompt("Enter your handle, please", "zero_cool");
-					var pointices = <%= [0] * @quiz.answer_map.values.uniq.length %>;
-					var slot = [CONFIG.nick, pointices];
-            
-					$.post("/dashes/add_slot/", 
-						{dash_id: dash_hash, slot: JSON.stringify(slot)},
-						function(ret) {
-							dash = JSON.parse(ret);
-							append_slot(slot);
-						}
-					);
-				}
-			)
-			
-		});
-
-		jug.subscribe("/" + dash_hash, function(ret) {
-			console.log(ret);
-			dash = JSON.parse(ret);
-			new_leaderboard(dash.board);
-		})
-
-		var s = function(msg) {
-			$.post("/play/msg", {txt: msg}, 
-				function(data) {
-					console.log(data);
-				}
-			)
-		}
-	});
-	</script>
 
 	<ul id="chats">
 
