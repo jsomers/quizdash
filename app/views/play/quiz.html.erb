@@ -1,16 +1,5 @@
 <% content_for :extra_head do %>
 	<%= javascript_include_tag "http://localhost:8080/application.js" %>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			answers = <%= raw(@quiz.answer_map.to_json) %>;
-			n_questions = <%= @quiz.questions.length %>;
-			dash_hash = "<%= @dash_hash %>";
-			quiz_id = "<%= @quiz.id %>";
-			jug = new Juggernaut;
-			seen = {};
-			dash = {};
-		});
-	</script>
 <% end %>
 
 <% content_for :h1 do %>
@@ -25,10 +14,10 @@
 
 <div class="news">
 	<%= render "play/inputs" %>
-
-	<ul id="chats">
-
-	</ul>
 </div>
 	
-	<%= render "play/leaderboard" %>
+<%= render "play/leaderboard" %>
+
+<% content_for :page_scripts do %>
+	<%= render "play/quiz_js" %>
+<% end %>

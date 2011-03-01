@@ -1,5 +1,3 @@
-Javascript namespacing, load order, etc.
-
 Be sure to Juggernaut broadcast to the channel when a player joins (we're not doing that now!).
 
 Flash the question red when someone else gets it (and increment the people counter).

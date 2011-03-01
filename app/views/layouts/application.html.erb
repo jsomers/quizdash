@@ -10,10 +10,10 @@
 
 		<script type="text/javascript"> 
 			if (typeof console == "undefined" || typeof console.log == "undefined")
-			console = { log: function() {} }
+				console = { log: function() {} }
 		</script> 
-		<%= yield :extra_head %>
 		<%= javascript_include_tag :all %>
+		<%= yield :extra_head %>
 	</head> 
 	
 	<body class="logged_in page-dashboard">
@@ -41,5 +41,6 @@
 			<%= render :partial => "boilerplate/footer" %>
 			
 		</div><!-- /#main --> 
-	</body> 
+		<%= yield :page_scripts %>
+	</body>
 </html>

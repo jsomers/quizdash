@@ -1,0 +1,68 @@
+<script type="text/javascript">
+	var QUIZ = {
+		nick: "jsomers",
+		id: null,
+		focus: true,
+		mark_correct: function(q, ans) {
+			var q = $(".repositories > li[qid=" + q + "]").addClass("correct");
+	    	q.find("h3").html(ans).removeClass("hint");
+	    	q.find("ul.repo-stats").effect("highlight", {color: "yellow"}, 500);
+	    	q.effect("highlight", {color: "yellow"}, 500);
+	    	q.find("img").show();
+		}
+	};
+
+	$(document).ready(function() {		
+		dash_hash = "<%= @dash_hash %>";
+		quiz_id = "<%= @quiz.id %>";
+		
+		answers = <%= raw(@quiz.answer_map.to_json) %>;
+		n_questions = <%= @quiz.questions.length %>;
+		seen = {};
+		
+		jug = new Juggernaut;
+		jug.on("connect", function() {
+			$.get("/dashes/get/" + dash_hash, 
+				function(ret) {
+					dash = JSON.parse(ret);
+					leaderboard.new(dash.board);
+
+					QUIZ.nick = prompt("Enter your handle, please", "zero_cool");
+					//CONFIG.nick = "player " + Math.floor(Math.random() * 101);
+					var pointices = new_filled_array(n_questions, 0);
+					var slot = [QUIZ.nick, pointices];
+
+					$.post("/dashes/add_slot/", 
+						{dash_id: dash_hash, slot: JSON.stringify(slot)},
+						function(ret) {
+							dash = JSON.parse(ret);
+							leaderboard.append_slot(slot);
+						}
+					);
+				}
+			)
+
+		});
+
+		jug.subscribe("/" + dash_hash, function(ret) {
+			dash = JSON.parse(ret);
+			leaderboard.new(dash.board);
+		})
+		
+		$("#answer").keyup(function() {
+	    	var ans = $("#answer").val().toLowerCase();
+	    	var qid = answers[ans];
+	    	if (typeof(qid) != "undefined" && typeof(seen[qid]) == "undefined") {
+	    		QUIZ.mark_correct(qid, ans);
+	    		$("#answer").val("");
+	    		seen[qid] = true;
+	    		$.post("/dashes/mark_q/",
+	    		    {dash_id: dash_hash, quiz_id: quiz_id, qid: qid, plyr: QUIZ.nick},
+	    		    function(ret) {
+	                    console.log(ret);
+	    		    }
+	    		)
+	    	};
+	    });
+	});
+</script>
