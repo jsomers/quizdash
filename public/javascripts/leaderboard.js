@@ -67,8 +67,45 @@ leaderboard = {
     	}
     },
     
-    // Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]],
-	// updates the DOM with the new information, and animates the transitions.
+    // Retrieves the current values of the indicators which count how many
+    // players have correctly answered a given question.
+    current_ppl_counts: function() {
+        var counts = [];
+        $("li.forks a").each(function(i, e) {
+            counts.push( parseFloat($(e).html()) );
+        })
+        return counts;
+    },
+    
+    // Given a new leaderboard object, returns a list that counts how many players
+    // have correctly answered a given question.
+    new_ppl_counts: function(leaderboard) {
+        var upd = new_filled_array(leaderboard[0][1].length, 0);
+        for (var i = 0; i < leaderboard.length; i++) {
+            var pts = leaderboard[i][1];
+            for (var j = 0; j < pts.length; j++) {
+                upd[j] += pts[j];
+            }
+        }
+       return upd; 
+    },
+    
+    // Updates the indicators which count how many players have correctly
+    // answered a given question.
+    update_ppl_indicators: function(counts) {
+        var old = this.current_ppl_counts();
+        $("li.forks a").each(function(i, e) {
+            $(e).html(counts[i]);
+            var li = $("li.simple:eq(" + i + ")");
+            if (counts[i] > old[i] && !$(li).hasClass("correct")) {
+                $(li).effect("highlight", {color: "#ffcccc"}, 300);
+                $(e).effect("highlight", {color: "#ffcccc"}, 300);
+            }
+        })
+    },
+    
+    // Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]]
+	// and updates the DOM with the new information.
     new: function(leaderboard) {
     	var old = this.current();
 
@@ -86,12 +123,12 @@ leaderboard = {
     		row.li.append(row.a);
     		$("#repo_listing").append(row.li);
     		
-    		
     		if (Object.keys(old).length > 0) {
     		    try { 
     		        this.flash(i, old[pos[0]]["place"], row.li, iam)
     		    } catch(err) {};
 		    }
     	};
+    	this.update_ppl_indicators(this.new_ppl_counts(leaderboard));
     }
 }

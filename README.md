@@ -1,8 +1,8 @@
 ### /play/quiz TODOs ###
 
-Be sure to Juggernaut broadcast to the channel when a player joins (we're not doing that now!).
-
 Flash the question red when someone else gets it (and increment the people counter).
+
+For games with an odd number of questions, make the left column longer.
 
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 
