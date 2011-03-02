@@ -35,8 +35,7 @@
 					$.post("/dashes/add_slot/", 
 						{dash_id: dash_hash, slot: JSON.stringify(slot)},
 						function(ret) {
-							dash = JSON.parse(ret);
-							leaderboard.append_slot(slot);
+							console.log(ret);
 						}
 					);
 				}

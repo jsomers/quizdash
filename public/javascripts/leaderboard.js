@@ -67,18 +67,6 @@ leaderboard = {
     	}
     },
 
-    append_slot: function(slot) {
-        var old = this.current();
-        var i = (old ? Object.keys(old).length : 0);
-        var pos = slot,
-            row = this.build_row(pos, i);
-            
-        row.li.addClass("me");
-        row.a.append(row.ct).append(row.bar).append(row.name).append(row.place)
-    	row.li.append(row.a);
-    	$("#repo_listing").append(row.li);
-    },
-
     new: function(leaderboard) {
     	// Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]],
     	// updates the DOM with the new information, and animates the transitions.
@@ -91,7 +79,6 @@ leaderboard = {
     	// TODO: Refactor this using the append_slot function.
 	
     	var old = this.current();
-    	console.log(old)
 
     	$("#repo_listing").empty();
 
@@ -107,8 +94,12 @@ leaderboard = {
     		row.li.append(row.a);
     		$("#repo_listing").append(row.li);
     		
-    		if (Object.keys(old).length > 0)
-    		    this.flash(i, old[pos[0]]["place"], row.li, iam);
+    		
+    		if (Object.keys(old).length > 0) {
+    		    try { 
+    		        this.flash(i, old[pos[0]]["place"], row.li, iam)
+    		    } catch(err) {};
+		    }
     	};
     }
 }

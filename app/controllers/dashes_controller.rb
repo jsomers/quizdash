@@ -9,7 +9,8 @@ class DashesController < ApplicationController
     leaderboard = d.board
     leaderboard << JSON.parse(params[:slot])
     d.save(leaderboard)
-    render :json => d
+    Juggernaut.publish("/#{params[:dash_id]}", d.to_json)
+    render :text => "OK"
   end
   
   def mark_q
