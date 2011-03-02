@@ -1,6 +1,6 @@
 leaderboard = {
+    // Gets the rankings that are implicitly baked into the DOM.
     current: function() {
-    	// Gets the rankings that are implicitly baked into the DOM.
     	var leaderboard = {};
     	$(".diffstat").each(function(i, e) {
     		var player_name = $(e).find(".diffstat-summary").text();
@@ -23,8 +23,8 @@ leaderboard = {
        return n + ( s[(v - 20) % 10] || s[v] || s[0] );
     },
 
+    // Creates a diffstat DOM element from a list of booleans.
     diffstat_bar: function(pointices) {
-        // Creates a diffstat DOM element from a list of booleans.
     	var bar = $("<span>").addClass("diffstat-bar");
     	for (var i = 0; i < pointices.length; i++) {
     		var dot = $("<span>•</span>")
@@ -35,8 +35,8 @@ leaderboard = {
     	return bar;
     },
 
+    // Counts the number of correct answers in a pointex list.
     n_correct: function(pointices) {
-        // Counts the number of correct answers in a pointex list.
     	var n = 0;
     	for (var i = 0; i < pointices.length; i++) {
     		if (pointices[i] == 1)
@@ -45,8 +45,8 @@ leaderboard = {
     	return n;
     },
 
+    // Creates jQ objects for a given row.
     build_row: function(pos, i) {
-        // Creates jQ objects for a given row.
         return {
             li: $("<li>").addClass("source diffstat"),
             a: $("<a>").attr("href", "#").addClass("tooltipped leftwards"),
@@ -66,18 +66,10 @@ leaderboard = {
     		el.effect("highlight", {color: color}, 1000);
     	}
     },
-
+    
+    // Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]],
+	// updates the DOM with the new information, and animates the transitions.
     new: function(leaderboard) {
-    	// Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]],
-    	// updates the DOM with the new information, and animates the transitions.
-	
-    	// TODO: Animate (e.g., slide) the transitions?
-    	// TODO: Color of background highlight should be based on position.
-    	// < 5 = red, 3-5 = yellow, 2 = blue, 1 = green.
-    	// TODO: Maybe the dots themselves should flash? Change blindness?
-    	
-    	// TODO: Refactor this using the append_slot function.
-	
     	var old = this.current();
 
     	$("#repo_listing").empty();

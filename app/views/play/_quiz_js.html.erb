@@ -33,10 +33,7 @@
 					var slot = [QUIZ.nick, pointices];
 
 					$.post("/dashes/add_slot/", 
-						{dash_id: dash_hash, slot: JSON.stringify(slot)},
-						function(ret) {
-							console.log(ret);
-						}
+						{dash_id: dash_hash, slot: JSON.stringify(slot)}
 					);
 				}
 			)
