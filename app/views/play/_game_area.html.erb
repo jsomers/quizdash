@@ -1,6 +1,6 @@
 <% questions = @quiz.questions %>
-<% lefts = questions.first( questions.length / 2 ) %>
-<% rights = questions - lefts %>
+<% rights = questions.last( questions.length / 2 ) %>
+<% lefts = questions - rights %>
 
 <form action="/repositories" method="post">
 	<dl class="form">
