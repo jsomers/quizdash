@@ -1,5 +1,7 @@
 ### /play/quiz TODOs ###
 
+Think about how timers will work
+
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 
 Quiz categories are not yet hooked up to the quiz crud interface.
@@ -74,3 +76,5 @@ Histogram with everyone's progress. or, they could show activity on the site mor
 Login for users, stats, etc.
 
 Party mode / matchmaking
+
+De-illegalize templates

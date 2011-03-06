@@ -13,12 +13,12 @@
 	};
 
 	$(document).ready(function() {		
-		dash_hash = "<%= @dash_hash %>";
+		dash_hash = "<%= @hash %>";
 		quiz_id = "<%= @quiz.id %>";
 		
 		answers = <%= raw(@quiz.answer_map.to_json) %>;
 		n_questions = <%= @quiz.questions.length %>;
-		seen = {};
+		seen = {}; // TODO: This should probably be in QUIZ object, as should answers.
 		
 		jug = new Juggernaut;
 		jug.on("connect", function() {
