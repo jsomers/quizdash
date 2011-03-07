@@ -1,6 +1,16 @@
 ### /play/quiz TODOs ###
 
-Think about how timers will work.
+How timers will work
+	Quizzes should have a "time limit" field
+	At a certain point the server should fire off a "start countdown" event to the clients in the channel
+	Countdown runs just using Javascript timer; clients locked out for ten seconds or so
+	At t - 5 seconds no new clients are allowed to join the dash
+	When clients are freed, they start playing, the quiz timer starts counting down
+	At that moment we fire a message to the server saying that the dash has started at this timestamp
+	Quiz timers are just regular Javascript clocks
+	Every time the dash is touched its "last-touch" timestamp changes
+	On every Juggernaut event the quiz timers are updated with the new ("last-touch" - "first-touch") calculated time
+	Game is stopped for a client either when their clock hits zero or when the calculated time shows zero, whichever happens first		
 
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 
