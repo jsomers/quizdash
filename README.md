@@ -1,5 +1,7 @@
 ### /play/quiz TODOs ###
 
+Roadmap: self-contained games with timers with manual countdown start -> tweak -> matchmaking/rooms
+
 How timers will work
 	Quizzes should have a "time limit" field
 	At a certain point the server should fire off a "start countdown" event to the clients in the channel
@@ -10,13 +12,15 @@ How timers will work
 	Quiz timers are just regular Javascript clocks
 	Every time the dash is touched its "last-touch" timestamp changes
 	On every Juggernaut event the quiz timers are updated with the new ("last-touch" - "first-touch") calculated time
-	Game is stopped for a client either when their clock hits zero or when the calculated time shows zero, whichever happens first		
+	Game is stopped for a client either when their clock hits zero or when the calculated time shows zero, whichever happens first
+
+What's stored when you end a dash?
 
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 
 Quiz categories are not yet hooked up to the quiz crud interface.
 
-How to end a game? What is stored?
+Matchmaking and rooms
 
 Scramble the answers?
 	Come up with a simple random offset between 3 and 100. Call it f.
