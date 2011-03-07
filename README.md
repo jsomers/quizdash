@@ -1,6 +1,6 @@
 ### /play/quiz TODOs ###
 
-Think about how timers will work
+Think about how timers will work.
 
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 
