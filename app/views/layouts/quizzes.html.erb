@@ -58,6 +58,16 @@
 	
 			$("#quiz_title").keyup(function() {
 			    $("h1 em").html( $(this).val() );
+			});
+			
+			check_s = function() {
+				if ($("#quiz_time_limit").val() != 1) {
+					$("#minute-s").show();
+				} else { $("#minute-s").hide() };
+			}; check_s();
+			
+			$("#quiz_time_limit").change(function() {
+				check_s();
 			})
 		});
 	</script>
