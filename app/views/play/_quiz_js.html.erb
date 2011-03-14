@@ -15,6 +15,7 @@
 	$(document).ready(function() {		
 		dash_hash = "<%= @hash %>";
 		quiz_id = "<%= @quiz.id %>";
+		time_limit = <%= @quiz.time_limit %>;
 		
 		answers = <%= raw(@quiz.answer_map.to_json) %>;
 		n_questions = <%= @quiz.questions.length %>;
@@ -39,8 +40,18 @@
 		});
 
 		jug.subscribe("/" + dash_hash, function(ret) {
-			dash = JSON.parse(ret);
-			leaderboard.new(dash.board);
+			data = JSON.parse(ret);
+			if (data.board) {
+				leaderboard.new(data.board);
+			};
+			
+			if (data.msg) {
+				switch (data.msg) {
+					case "start_countdown":
+						begin_countdown();
+						break;
+				}
+			}
 		})
 		
 		$("#answer").keyup(function() {
@@ -73,7 +84,7 @@
 			};
 		};
 	
-		tick = function(m, s, i) {
+		tick = function(selector, m, s, i) {
 			if (typeof i == "undefined") {
 				if (s == 0) {
 					m -= 1;
@@ -83,9 +94,9 @@
 				};
 				if (m < 1) {
 					var i = 9;
-					setTimeout("tick(" + m + ", " + s + ", " + i + ")", 100);
+					setTimeout("tick(\"" + selector + "\", " + m + ", " + s + ", " + i + ")", 100);
 				} else {
-					setTimeout("tick(" + m + ", " + s + ", " + i + ")", 1000);
+					setTimeout("tick(\"" + selector + "\", " + m + ", " + s + ", " + i + ")", 1000);
 				}
 			} else {
 				if (i == 0 && s > 0) {
@@ -98,9 +109,38 @@
 					i = 10;
 				}
 				i -= 1;
-				setTimeout("tick(" + m + ", " + s + ", " + i + ")", 100);
+				setTimeout("tick(\"" + selector + "\", " + m + ", " + s + ", " + i + ")", 100);
 			};
-			$(".clock span").html( pretty_time(m, s, i) );
+			$(selector).html( pretty_time(m, s, i) );
+		};
+		
+		start = function(minutes) {
+			tick(".clock span", minutes, 0);
+		};
+		
+		
+		end_countdown = function() {
+			$("#countdown_container").hide();
+			$("#overlay").hide();
+			$("#questions").css("opacity", "1.0");
+			$("#answer").attr("disabled", false).focus();
+		}
+		
+		countdown = function(n) {
+			$("#countdown_clock span").html(n);
+			if (n > 0) { 
+				setTimeout("countdown(" + (n - 1) + ")", 1000);
+			} else {
+				end_countdown();
+			}
+		}
+		
+		begin_countdown = function() {
+			$("#answer").attr("disabled", true);
+			var page_size = ___getPageSize();
+			$("#overlay").css("width", page_size[0]).css("height", page_size[1]).show();
+			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
+			countdown(9);
 		};
 		
 	});

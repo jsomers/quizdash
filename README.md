@@ -1,20 +1,32 @@
 ### /play/quiz TODOs ###
 
-Roadmap: self-contained games with timers with manual countdown start -> tweak -> matchmaking/rooms
+First, play with the guys (find / make up a good quiz).
+
+Then fix some bugs.
+
+Then clean up the latest countdown code.
+
+Quick thing: store the quiz_id on the dash object
+
+Then write the game_ending code (fire off a message that ends everyone's game; make sure that redundant such messages don't break anything).
+
+Then add the "first-touch" and "last-touch" logic.
+
+Then check to see whether timers are synced.
 
 How timers will work
-	Quizzes should have a "time limit" field
-	At a certain point the server should fire off a "start countdown" event to the clients in the channel
-	Countdown runs just using Javascript timer; clients locked out for ten seconds or so
-	At t - 5 seconds no new clients are allowed to join the dash
+	At a certain point the server should fire off a "start countdown" event to the clients in the channel (do this manually for now)
+	Clients locked out for ten seconds or so
+	At t - 5 seconds no new clients are allowed to join the dash (do this logic later)
 	When clients are freed, they start playing, the quiz timer starts counting down
 	At that moment we fire a message to the server saying that the dash has started at this timestamp
-	Quiz timers are just regular Javascript clocks
 	Every time the dash is touched its "last-touch" timestamp changes
-	On every Juggernaut event the quiz timers are updated with the new ("last-touch" - "first-touch") calculated time
-	Game is stopped for a client either when their clock hits zero or when the calculated time shows zero, whichever happens first
+	Let's examine the difference between ("last-touch" - "first-touch") and the regular Javascript clock
+	Synchronize if necessary
+	Just end the game either when your clock runs out or when someone else's has (and they've sent a "time's up" message)
 
 What's stored when you end a dash?
+	Probably want to store people's scores. Might as well just leave the Dash object.
 
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 
@@ -43,6 +55,20 @@ Min of two players before a channel's status can be okayed to go, then there's a
 How to avoid keeping people waiting in a waiting area for too long, but not give away the content of the upcoming game? Also want to give people a chance to read the instructions.
 
 Player disconnects?
+
+### Key metrics ###
+
+How many players are there?
+
+How many people who start a game finish it?
+
+How many people who finish one game play another?
+
+Histogram of game streaks
+
+How do these metrics correlate with performance?
+
+Keep a dashboard that's updated dynamically (even using Juggernaut) with simple Redis counts on events
 
 ### Reference info ###
 

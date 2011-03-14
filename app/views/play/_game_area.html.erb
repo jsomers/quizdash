@@ -4,34 +4,36 @@
 
 <form action="/repositories" method="post">
 	<dl class="form">
-		<dd><input id="answer" name="" size="30" type="text" placeholder="Type answers here&hellip;"></dd>
+		<dd><input id="answer" name="" disabled="true" size="30" type="text" placeholder="Type answers here&hellip;"></dd>
 	</dl>
 </form>
 
-<div class="lefterly">
-	<ul class="repositories">
-		<% lefts.each do |q| %>
-		<li class="simple" qid="<%= q.id %>">
-			<img src="/images/correct.gif"/>
-			<ul class="repo-stats">
-				<li class="forks"><a href="/wezm/allocator/network" title="Forks">0</a></li>
-			</ul>
-			<h3 class="hint"><%= q.prompt %></h3>
-		</li>
-		<% end %>
-	</ul>
-</div><!-- /#lefterly -->
+<div id="questions" style="opacity: 0.2">
+	<div class="lefterly">
+		<ul class="repositories">
+			<% lefts.each do |q| %>
+			<li class="simple" qid="<%= q.id %>">
+				<img src="/images/correct.gif"/>
+				<ul class="repo-stats">
+					<li class="forks"><a href="/wezm/allocator/network" title="Forks">0</a></li>
+				</ul>
+				<h3 class="hint"><%= q.prompt %></h3>
+			</li>
+			<% end %>
+		</ul>
+	</div><!-- /#lefterly -->
 
-<div class="righterly">
-	<ul class="repositories">
-		<% rights.each do |q| %>
-		<li class="simple" qid="<%= q.id %>">
-			<img src="/images/correct.gif"/>
-			<ul class="repo-stats">
-				<li class="forks"><a href="/wezm/allocator/network" title="Forks">0</a></li>
-			</ul>
-			<h3 class="hint"><%= q.prompt %></h3>
-		</li>
-		<% end %>
-	</ul>
-</div><!-- /#righterly -->
+	<div class="righterly">
+		<ul class="repositories">
+			<% rights.each do |q| %>
+			<li class="simple" qid="<%= q.id %>">
+				<img src="/images/correct.gif"/>
+				<ul class="repo-stats">
+					<li class="forks"><a href="/wezm/allocator/network" title="Forks">0</a></li>
+				</ul>
+				<h3 class="hint"><%= q.prompt %></h3>
+			</li>
+			<% end %>
+		</ul>
+	</div><!-- /#righterly -->
+</div>
