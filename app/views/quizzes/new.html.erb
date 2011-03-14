@@ -9,6 +9,14 @@
 	</dl><br>
 	
 	<dl class="form">
+		<dt><%= f.label :time_limit, "Time limit" %> 
+			<span style="font-weight: normal">
+				of <%= select(:quiz, :time_limit, (1..15).collect {|i| ["#{i}:00", i]}) %> minute<span id="minute-s">s</span>
+			</span>
+		</dt>
+	</dl><br>
+	
+	<dl class="form">
 		<dt><%= f.label :instructions, "Special Instructions" %> <small style="font-weight:normal">(optional)</dt>
 		<dd><%= f.text_area :instructions %></dd>
 	</dl><br>
@@ -19,7 +27,7 @@
 	
 	<div id="questions">
 		<div class="question">
-		<% f.fields_for :questions do |question_form| %>
+		<%= f.fields_for :questions do |question_form| %>
 		<dl class="form questions">
 			<dd class="half">
 				<%= question_form.text_field :prompt, {

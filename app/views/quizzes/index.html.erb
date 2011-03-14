@@ -1,10 +1,10 @@
 <% content_for :h1 do %>
-	All quizzes
+	All quizzes (<a href="/quizzes/new">create a new quiz</a>)
 <% end %>
 
 <% @quizzes.each do |q| %>
 	<div class="quiz_list" qid="<%= q.id %>">
-		<a href="#" class="remove_quiz" qid="<%= q.id %>">[x]</a> <a href="/quizzes/edit/<%= q.id %>"><%= q.title %> (<%= q.questions.count %> questions)</a><br>
+		<a href="#" class="remove_quiz" qid="<%= q.id %>">[x]</a> <a href="/quizzes/edit/<%= q.id %>"><%= q.title %> (<%= q.questions.count %> question<% if q.questions.count > 1 %>s<% end %>)</a><br>
 	</div>
 <% end %>
 
