@@ -85,6 +85,10 @@
 		};
 	
 		tick = function(selector, m, s, i) {
+			if (m == 0 && s == 0 && i == 0) {
+				end_dash();
+				return false;
+			}
 			if (typeof i == "undefined") {
 				if (s == 0) {
 					m -= 1;
@@ -143,6 +147,14 @@
 			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
 			countdown(9);
 		};
+		
+		end_dash = function() {
+			$("#answer").attr("disabled", true);
+			var page_size = ___getPageSize();
+			$("#overlay").css("width", page_size[0]).css("height", page_size[1]).show();
+			$("#countdown_container").css("left", (page_size[0] / 2) - 350 + "px").show();
+			$("#countdown_clock span").html("game over");
+		}
 		
 	});
 </script>
