@@ -48,7 +48,7 @@
 			if (data.msg) {
 				switch (data.msg) {
 					case "start_countdown":
-						begin_countdown();
+						start_countdown();
 						break;
 				}
 			}
@@ -118,17 +118,20 @@
 			$(selector).html( pretty_time(m, s, i) );
 		};
 		
-		start = function(minutes) {
+		start_dash_clock = function(minutes) {
 			tick(".clock span", minutes, 0);
 		};
-		
+
+		initiate_dash = function() {
+			$.get("/dashes/start_countdown", {dash_id: dash_hash}, function(ret) { return false; });
+		}
 		
 		end_countdown = function() {
 			$("#countdown_container").hide();
 			$("#overlay").hide();
 			$("#questions").css("opacity", "1.0");
 			$("#answer").attr("disabled", false).focus();
-			start(time_limit);
+			start_dash_clock(time_limit);
 		}
 		
 		countdown = function(n) {
@@ -140,7 +143,7 @@
 			}
 		}
 		
-		begin_countdown = function() {
+		start_countdown = function() {
 			$("#answer").attr("disabled", true);
 			var page_size = ___getPageSize();
 			$("#overlay").css("width", page_size[0]).css("height", page_size[1]).show();
@@ -152,8 +155,9 @@
 			$("#answer").attr("disabled", true);
 			var page_size = ___getPageSize();
 			$("#overlay").css("width", page_size[0]).css("height", page_size[1]).show();
-			$("#countdown_container").css("left", (page_size[0] / 2) - 350 + "px").show();
-			$("#countdown_clock span").html("game over");
+			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
+			var your_place = leaderboard.ordinal(leaderboard.current()[QUIZ.nick].place + 1);
+			$("#countdown_clock span").html(your_place);
 		}
 		
 	});

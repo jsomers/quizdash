@@ -19,4 +19,10 @@ class DashesController < ApplicationController
     Juggernaut.publish("/#{params[:dash_id]}", d.to_json)
     render :text => "OK"
   end
+  
+  def start_countdown
+    msg = {"msg" => "start_countdown"}
+    Juggernaut.publish("/#{params[:dash_id]}", msg.to_json)
+    render :text => "OK"
+  end
 end
