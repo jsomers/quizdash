@@ -15,4 +15,11 @@ class Quiz < ActiveRecord::Base
     end
     return map
   end
+  
+  def add_questions_from_file(file)
+    require 'csv'
+    CSV.parse(file.read).each do |row|
+      self.questions.create(:prompt => row[0], :permissible_answers => row[1..-1])
+    end
+  end
 end

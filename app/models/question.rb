@@ -6,6 +6,8 @@ class Question < ActiveRecord::Base
   before_save :listify_permissibles
   
   def listify_permissibles
-    self.permissible_answers = self.permissible_answers.split(",").collect {|pa| pa.strip}
+    if self.permissible_answers.is_a? String
+      self.permissible_answers = self.permissible_answers.split(",").collect {|pa| pa.strip}
+    end
   end
 end

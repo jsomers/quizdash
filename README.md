@@ -1,10 +1,10 @@
 ### /play/quiz TODOs ###
 
-Make game over screen with standings?
-
 First, play with the guys (find / make up a good quiz).
 
 Then fix some bugs.
+
+CSV upload interface and backend code.
 
 Then clean up the latest countdown code.
 
