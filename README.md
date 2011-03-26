@@ -6,6 +6,9 @@ Deploy
 	Have to start juggernaut
 		/usr/local/src/npm/node_modules/juggernaut# node server.js
 	Have to open port 8080 on web role through security group
+	Can we close port 8080 on app role?
+	Can we bring back SSL support?
+	Can we bring back monit? (Remember port change to 8090 and AWS security group)
 
 Matchmaking and rooms (first cut)
 	One room per quiz
