@@ -1,0 +1,55 @@
+--- 
+- !ruby/object:Rubber::Configuration::InstanceItem 
+  domain: quizdash.com
+  external_host: ec2-174-129-100-100.compute-1.amazonaws.com
+  external_ip: 174.129.100.100
+  instance_id: i-8e9845e1
+  internal_host: ip-10-245-83-159.ec2.internal
+  internal_ip: 10.245.83.159
+  name: demo
+  platform: linux
+  roles: 
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: web
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: haproxy
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: app
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: passenger
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: apache
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: db
+    options: 
+      primary: true
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: mysql_master
+    options: {}
+
+  root_device_type: instance-store
+  security_groups: 
+  - quizdash_production_default
+  - quizdash_production_web
+  - quizdash_production_demo
+  - quizdash_production_haproxy
+  - quizdash_production_app
+  - quizdash_production_passenger
+  - quizdash_production_apache
+  - quizdash_production_db
+  - quizdash_production_mysql_master
+  zone: us-east-1d
+- volumes: {}
+
+  static_ips: {}
+

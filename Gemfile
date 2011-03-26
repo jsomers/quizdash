@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source :gemcutter
 
 gem 'rails', '3.0.0.rc2'
 
@@ -30,3 +30,4 @@ gem 'redis'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "rubber", "1.11.0"

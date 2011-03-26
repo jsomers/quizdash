@@ -1,25 +1,31 @@
 ### /play/quiz TODOs ###
 
-First, play with the guys (find / make up a good quiz).
+Deploy
+	Have to start redis server
+		/usr/local/src/redis-2.2.2/src# ./redis-server 
+	Have to start juggernaut
+		/usr/local/src/npm/node_modules/juggernaut# node server.js
+	Have to open port 8080 on web role through security group
+	Can we close port 8080 on app role?
+	Can we bring back SSL support?
+	Can we bring back monit? (Remember port change to 8090 and AWS security group)
 
-Then fix some bugs.
+Matchmaking and rooms (first cut)
+	One room per quiz
+	Start by voting
+	When game ends the dash data is stored then destroyed
+	Either "click here to play again" or go somewhere else
+	
+Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
+	Also scale the input boxes
 
 CSV upload interface and backend code.
 
-Then clean up the latest countdown code.
+Quick thing: store the quiz_id on the dash object?
 
-Quick thing: store the quiz_id on the dash object
-
-Then write the game_ending code (fire off a message that ends everyone's game; make sure that redundant such messages don't break anything).
-
-Then add the "first-touch" and "last-touch" logic.
-
-Then check to see whether timers are synced.
-
-How timers will work
+More complex version of how timers could work
 	At a certain point the server should fire off a "start countdown" event to the clients in the channel (do this manually for now)
 	Clients locked out for ten seconds or so
-	At t - 5 seconds no new clients are allowed to join the dash (do this logic later)
 	When clients are freed, they start playing, the quiz timer starts counting down
 	At that moment we fire a message to the server saying that the dash has started at this timestamp
 	Every time the dash is touched its "last-touch" timestamp changes
@@ -30,11 +36,7 @@ How timers will work
 What's stored when you end a dash?
 	Probably want to store people's scores. Might as well just leave the Dash object.
 
-Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
-
 Quiz categories are not yet hooked up to the quiz crud interface.
-
-Matchmaking and rooms
 
 Scramble the answers?
 	Come up with a simple random offset between 3 and 100. Call it f.
