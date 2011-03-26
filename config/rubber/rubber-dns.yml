@@ -4,21 +4,21 @@
 # OPTIONAL: The configuration for each dns provider (nettica|zerigo|dyndns)
 #          This lets rubber update a dynamic dns service with the instance alias and ip
 #
-dns_providers:
-  nettica:
-    user: joe
-    password: sekret
-    type: A
-    ttl: 300
-  zerigo:
-    email: foo@bar.com
-    token: hexxy
-    type: A
-    ttl: 300
-  dyndns:
-    user: joe
-    password: sekret
-    update_url: https://members.dyndns.org/nic/update?hostname=%host%&myip=%ip%'
+#dns_providers:
+#  nettica:
+#    user: joe
+#    password: sekret
+#    type: A
+#    ttl: 300
+#  zerigo:
+#    email: jsomers@gmail.com
+#    token: cb91ff6121519a004ee9731d9ca152bc
+#    type: A
+#    ttl: 300
+#  dyndns:
+#    user: joe
+#    password: sekret
+#    update_url: https://members.dyndns.org/nic/update?hostname=%host%&myip=%ip%'
 
 # OPTIONAL: Lets you configure your dns service, for example to add other CNAMES
 #           or setup dns round robin, etc.  Run "cap rubber:setup_dns_records"

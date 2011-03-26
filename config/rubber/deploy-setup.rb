@@ -110,10 +110,11 @@ namespace :rubber do
     after "rubber:install_packages", "rubber:base:node_install"
     task :node_install do
       rubber.sudo_script 'node_install', <<-ENDSCRIPT
-        sudo apt-get install python-software-properties
-        sudo add-apt-repository ppa:jerome-etienne/neoip
-        sudo apt-get update
-        sudo apt-get install nodejs          
+        git clone git://github.com/joyent/node.git /tmp/node
+        cd /tmp/node
+        ./configure --prefix /usr/local
+        make
+        make install
       ENDSCRIPT
     end
 

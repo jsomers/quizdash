@@ -8,7 +8,6 @@ gem 'rails', '3.0.0.rc2'
 gem 'mysql'
 gem 'juggernaut'
 gem 'redis'
-gem 'rubber'
 
 # Use unicorn as the web server
 # gem 'unicorn'
