@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source :gemcutter
 
 gem 'rails', '3.0.0.rc2'
 
@@ -8,6 +8,7 @@ gem 'rails', '3.0.0.rc2'
 gem 'mysql'
 gem 'juggernaut'
 gem 'redis'
+gem 'rubber'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -30,3 +31,4 @@ gem 'redis'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "rubber", "1.11.0"
