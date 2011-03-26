@@ -107,14 +107,31 @@ namespace :rubber do
     end
     
     # We need a rails user for safer permissions used by deploy.rb
-    after "rubber:install_packages", "rubber:base:node_install"
-    task :node_install do
-      rubber.sudo_script 'node_install', <<-ENDSCRIPT
+    after "rubber:install_packages", "rubber:base:redis_node_and_juggernaut"
+    task :redis_node_and_juggernaut do
+      rubber.sudo_script 'redis_node_and_juggernaut', <<-ENDSCRIPT
+        # install redis
+        cd /usr/local/src
+        curl -O http://redis.googlecode.com/files/redis-2.2.2.tar.gz
+        tar xzf redis-2.2.2.tar.gz
+        cd redis-2.2.2
+        make
+      
+        # install node
         git clone git://github.com/joyent/node.git /tmp/node
         cd /tmp/node
         ./configure --prefix /usr/local
         make
         make install
+        
+        # install npm
+        cd /usr/local/src
+        git clone git://github.com/isaacs/npm.git
+        cd npm
+        make install
+        
+        # install juggernaut
+        npm install juggernaut
       ENDSCRIPT
     end
 

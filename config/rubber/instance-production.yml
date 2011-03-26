@@ -1,12 +1,12 @@
 --- 
 - !ruby/object:Rubber::Configuration::InstanceItem 
   domain: quizdash.com
-  external_host: ec2-50-16-121-103.compute-1.amazonaws.com
-  external_ip: 50.16.121.103
-  instance_id: i-4820f227
-  internal_host: ip-10-112-95-113.ec2.internal
-  internal_ip: 10.112.95.113
-  name: staging
+  external_host: ec2-174-129-100-100.compute-1.amazonaws.com
+  external_ip: 174.129.100.100
+  instance_id: i-8e9845e1
+  internal_host: ip-10-245-83-159.ec2.internal
+  internal_ip: 10.245.83.159
+  name: demo
   platform: linux
   roles: 
   - !ruby/object:Rubber::Configuration::RoleItem 
@@ -41,7 +41,7 @@
   security_groups: 
   - quizdash_production_default
   - quizdash_production_web
-  - quizdash_production_staging
+  - quizdash_production_demo
   - quizdash_production_haproxy
   - quizdash_production_app
   - quizdash_production_passenger

@@ -4,17 +4,17 @@
 # OPTIONAL: The configuration for each dns provider (nettica|zerigo|dyndns)
 #          This lets rubber update a dynamic dns service with the instance alias and ip
 #
-#dns_providers:
+dns_providers:
 #  nettica:
 #    user: joe
 #    password: sekret
 #    type: A
 #    ttl: 300
-#  zerigo:
-#    email: jsomers@gmail.com
-#    token: cb91ff6121519a004ee9731d9ca152bc
-#    type: A
-#    ttl: 300
+  zerigo:
+    email: jsomers@gmail.com
+    token: cb91ff6121519a004ee9731d9ca152bc
+    type: A
+    ttl: 300
 #  dyndns:
 #    user: joe
 #    password: sekret

@@ -3,9 +3,9 @@
 # e.g. to install mysql only on db role, and awstats only on web01:
 #
 # packages: [ruby]
-roles:
-    app:
-        packages: [redis-server]
+# roles:
+#     app:
+#         packages: [redis-server]
 # hosts:
 #   web01:
 #     packages: [awstats]

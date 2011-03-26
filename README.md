@@ -1,6 +1,11 @@
 ### /play/quiz TODOs ###
 
 Deploy
+	Have to start redis server
+		/usr/local/src/redis-2.2.2/src# ./redis-server 
+	Have to start juggernaut
+		/usr/local/src/npm/node_modules/juggernaut# node server.js
+	Have to open port 8080 on web role through security group
 
 Matchmaking and rooms (first cut)
 	One room per quiz
