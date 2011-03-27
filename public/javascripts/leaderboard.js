@@ -106,11 +106,11 @@ leaderboard = {
     
     // Takes a "leaderboard" like ["jsomers", [0, 1, 0...]], ["pingoaf", [...]]
 	// and updates the DOM with the new information.
-    new: function(leaderboard) {
+    new: function(leaderboard, ready, started) {
     	var old = this.current();
 
     	$("#repo_listing").empty();
-
+        
     	for (var i = 0; i < leaderboard.length; i++) {
     	    var pos = leaderboard[i],
     		    row = this.build_row(pos, i),
@@ -118,6 +118,9 @@ leaderboard = {
     		
     		if (iam)
     			row.li.addClass("me");
+    		
+    		if (ready.indexOf(pos[0]) != -1 && !started)
+    		    row.li.addClass("ready");
     			
     		row.a.append(row.ct).append(row.bar).append(row.name).append(row.place)
     		row.li.append(row.a);

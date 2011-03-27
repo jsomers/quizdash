@@ -829,10 +829,13 @@ a.button:hover {
     border: none;
     border-bottom: 1px solid #e5e5e5;
 }
-#dashboard ul.repo_list .me,.ready {
+#dashboard ul.repo_list .me {
     border: none;
     background: #ffff99;
     border-bottom: 1px solid #e5e5e5;
+}
+#dashboard ul.repo_list .ready {
+    background: #ddffdd;
 }
 #dashboard ul.repo_list li a {
     display: block;

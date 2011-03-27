@@ -3,6 +3,7 @@
 		nick: "jsomers",
 		id: null,
 		focus: true,
+		im_ready: false,
 		mark_correct: function(q, ans) {
 			var q = $(".repositories > li[qid=" + q + "]").addClass("correct");
 	    	q.find("h3").html(ans).removeClass("hint");
@@ -42,16 +43,17 @@
 		jug.subscribe("/" + dash_hash, function(ret) {
 			data = JSON.parse(ret);
 			if (data.board) {
-				leaderboard.new(data.board);
+				leaderboard.new(data.board, data.ready, typeof(data.started_at) != undefined);
 			};
 			
 			if (data.msg) {
 				switch (data.msg) {
 					case "start_countdown":
 						start_countdown();
+						$(".bottom-bar span").remove();
 						break;
 					case "player_ready":
-						readify(data.player_ready);
+						readify(data.player_ready)
 						break;
 				}
 			}
@@ -74,11 +76,20 @@
 	    });
 	
 		$(".start-button").click(function() {
-			$.post("/dashes/activate_player",
-				{dash_id: dash_hash, player: QUIZ.nick},
-				function(ret) {
-					console.log(ret);
-				})
+			if (!QUIZ.im_ready) {
+				QUIZ.im_ready = true;
+				$(".start-button").css("background", "green");
+				$(".start-button").css("font-weight", "normal");
+				$(".start-button").css("text-shadow", "none");
+				$(".start-button").css("cursor", "default");
+				$(".start-button").html("Ready!");
+				
+				$.post("/dashes/activate_player",
+					{dash_id: dash_hash, player: QUIZ.nick},
+					function(ret) {
+						console.log(ret);
+					})
+				};
 			return false;
 		})
 	
@@ -141,7 +152,6 @@
 		end_countdown = function() {
 			$("#countdown_container").hide();
 			$("#overlay").hide();
-			$("#questions").css("opacity", "1.0");
 			$("#answer").attr("disabled", false).focus();
 			start_dash_clock(time_limit);
 		}
@@ -157,6 +167,10 @@
 		
 		start_countdown = function() {
 			$("#answer").attr("disabled", true);
+			$("#quiz_description").hide();
+			$(".news").css("position", "static");
+			$(".news").css("opacity", 1);
+			$("#your_repos").css("float", "right");
 			var page_size = ___getPageSize();
 			$("#overlay").css("width", page_size[0]).css("height", page_size[1]).show();
 			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
@@ -170,6 +184,14 @@
 			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
 			var your_place = leaderboard.ordinal(leaderboard.current()[QUIZ.nick].place + 1);
 			$("#countdown_clock span").html(your_place);
+		}
+		
+		readify = function(player) {
+			$("li.diffstat").each(function(i, e) {
+				if ($(e).find(".diffstat-summary").html() == player) {
+					$(e).css("background", "#ddffdd");
+				}
+			})
 		}
 		
 	});
