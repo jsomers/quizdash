@@ -7,8 +7,12 @@ class Quiz < ActiveRecord::Base
   validates_inclusion_of :time_limit, :in => 1..15
   validates_presence_of :title
 
-  # Creates object like {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}.
+  def self.popular(threshold=0)
+    Quiz.where(["play_count > ?", threshold]).order("play_count DESC")
+  end
+  
   def answer_map(offset=nil)
+    # Creates object like {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}.
     map = {}
     self.questions.each_with_index do |q|
       q.permissible_answers.each {|pa| map[pa] = q.id}
@@ -21,5 +25,9 @@ class Quiz < ActiveRecord::Base
     CSV.parse(file.read).each do |row|
       self.questions.create(:prompt => row[0], :permissible_answers => row[1..-1])
     end
+  end
+  
+  def url
+    "#{self.id}-#{self.title.downcase.gsub(/[^a-z0-9]/, '-').gsub('--', '-')}"
   end
 end

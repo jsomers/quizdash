@@ -3,19 +3,27 @@
 <% end %>
 
 <% content_for :h1 do %>
-	<a href="/">quizzes</a> &rarr; <a href="/jsomers">words</a> &rarr; <a href="https://github.com/jsomers/quizdash">fill in the blank</a> &rarr; <strong><a href="https://github.com/jsomers/quizdash">6-letters</a></strong>
+	<div style="text-align: center; font-size: 24px;"><%= @quiz.title %></div>
+<% end %>
+
+<% content_for :sub_h1 do %>
+	<div style="height: 30px; text-align: center; color: #99A7AF; font-size: 16px;">You will have <%= pluralize(@quiz.time_limit, "minute") %> to fill in <%= pluralize(@quiz.questions.length, "blank") %></div>
 <% end %>
 
 <% content_for :top_right do %>
 	<li class="clock">
-		There is <span>01:56</span> left
+		
 	</li>
 <% end %>
 
-<div class="news">
+<div class="news" style="display: none;">
 	<%= render "play/game_area" %>
 </div>
-	
+
+<div class="description">
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
 <%= render "play/leaderboard" %>
 
 <% content_for :page_scripts do %>

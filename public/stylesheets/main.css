@@ -730,7 +730,7 @@ a.button:hover {
     margin-left: -2px;
     background: url(/images/modules/repo_list/box_bottom.gif) 0 100% no-repeat;
 }
-#dashboard .repos a.show-more {
+#dashboard .repos span.show-more {
     display: block;
     padding: 10px;
     font-size: 14px;
@@ -738,7 +738,8 @@ a.button:hover {
     color: #999;
 }
 #dashboard .repos .bottom-bar img {
-    margin: 10px;
+    position: relative;
+    top: -1px;
 }
 #dashboard .repos .top-bar {
     position: relative;
@@ -828,9 +829,9 @@ a.button:hover {
     border: none;
     border-bottom: 1px solid #e5e5e5;
 }
-#dashboard ul.repo_list .me {
+#dashboard ul.repo_list .me,.ready {
     border: none;
-    background: #ccffff;
+    background: #ffff99;
     border-bottom: 1px solid #e5e5e5;
 }
 #dashboard ul.repo_list li a {
@@ -912,6 +913,14 @@ a.button:hover {
     margin-bottom: 15px;
     background-repeat: no-repeat;
     background-position: 0 50%;
+    text-align: center;
+    font-size: 24px;
+}
+.sub-h1 {
+    height: 30px;
+    text-align: center;
+    color: #99A7AF;
+    font-size: 16px;
 }
 .pagehead.repohead.vis-public h1 {
     
@@ -1390,7 +1399,8 @@ ul.repo-stats li.forks.forked a {
     margin: 0 0 10px 10px;
 }
 #dashboard .repos {
-    float: right;
+    margin:0 auto;
+    margin-top: 25px;
     clear: right;
 }
 #dashboard .repos h1 {
@@ -1600,7 +1610,7 @@ input.next {
     border-left: 1px solid #BEDCE7;
     border-right: 1px solid #BEDCE7;
     overflow: hidden;
-    padding: 0 0.7em 0.7em;
+    padding: 0 0.7em 0.3em;
     cursor: pointer;
     margin-top: 10px;
 }
@@ -1624,42 +1634,15 @@ input.next {
 #commit .human .refs {
     font-size: 150%;
 }
-#commit .human .message {
-    font-family: Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
-    font-size: 80%;
+#commit .human .title {
+    font-weight: bold;
+    font-size: 120%;
 }
-#commit .human .message pre {
-    white-space: pre-wrap;
-    width: 48em;
-    word-wrap: break-word;
-}
-#commit .human .message a {
-    color: #000000;
-}
-#commit .human .message a.vis {
-    color: #4183C4;
-}
-#commit .human .actor {
-    clear: left;
-    margin-top: 0.75em;
-}
-#commit .human .actor .gravatar {
-    background-color: white;
-    border: 1px solid #D0D0D0;
-    float: left;
-    line-height: 0;
-    margin-right: 0.7em;
-    padding: 2px;
-}
-#commit .human .actor .name {
-    line-height: 1.5em;
-}
-#commit .human .actor .name a {
-    color: #000000;
-}
-#commit .human .actor .name span {
-    color: #888888;
-    font-size: 90%;
+#commit .human .description {
+    color: #444;
+    font-size: 85%;
+    min-height: 20px;
+    padding-bottom: 3px;
 }
 #commit .human .date {
     color: #888;
@@ -1691,6 +1674,9 @@ input.next {
     line-height: 1.5em;
     padding: 0.8em 0 0.8em 1.2em;
     width: 18em;
+}
+#commit .machine span {
+     color: #222;
 }
 #commit .commit_oneline {
     background: url("/images/modules/commit/bg_gradient.gif") repeat-x scroll 0 100% #EAF2F5;

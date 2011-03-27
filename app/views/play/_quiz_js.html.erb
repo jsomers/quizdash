@@ -23,7 +23,7 @@
 		
 		jug = new Juggernaut;
 		jug.on("connect", function() {
-			$.get("/dashes/get/" + dash_hash, 
+			$.get("/dashes/get/" + dash_hash + "?quiz_id=" + quiz_id,
 				function(ret) {
 					dash = JSON.parse(ret);
 					//leaderboard.new(dash.board);
@@ -50,6 +50,9 @@
 					case "start_countdown":
 						start_countdown();
 						break;
+					case "player_ready":
+						readify(data.player_ready);
+						break;
 				}
 			}
 		})
@@ -69,6 +72,15 @@
 	    		)
 	    	};
 	    });
+	
+		$(".start-button").click(function() {
+			$.post("/dashes/activate_player",
+				{dash_id: dash_hash, player: QUIZ.nick},
+				function(ret) {
+					console.log(ret);
+				})
+			return false;
+		})
 	
 		pad = function(n) {
 			if (n < 10) {

@@ -1,5 +1,5 @@
 class BoilerplateController < ApplicationController
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.popular
   end
 end
