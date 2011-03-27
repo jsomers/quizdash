@@ -13,7 +13,7 @@
 				<%= truncate(quiz.description, :length => 233) %>
 			</div>
 			<div class="date">
- 					<abbr class="relatize relatized">played <%= pluralize(quiz.play_count, "time") %>&mdash;last played <%= time_ago_in_words(quiz.last_played) %> ago</abbr>
+ 					<abbr class="relatize relatized">played <%= pluralize(quiz.play_count, "time") %>&mdash;last played <%= begin time_ago_in_words(quiz.last_played) rescue "eons" end %> ago</abbr>
 			</div>
 		</div>
 		<div class="machine">
