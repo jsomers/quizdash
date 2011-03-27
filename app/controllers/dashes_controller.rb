@@ -46,6 +46,20 @@ class DashesController < ApplicationController
     render :text => "OK"
   end
   
+  def leave
+    obj = JSON.parse($redis.get params[:dash_id])
+    obj["board"] = obj["board"].select {|s| s[0] != params[:handle]}
+    obj["ready"] = obj["ready"].select {|r| r != params[:handle]}
+    obj["players"] = obj["players"].select {|p| p[0] != params[:handle]}
+    if obj["players"].empty?
+      $redis.del params[:dash_id]
+    else
+      $redis.set params[:dash_id], obj.to_json
+      Juggernaut.publish("/#{params[:dash_id]}", obj.to_json)
+    end
+    render :text => "OK"
+  end
+  
   private
   
   def new_dash(id, quiz_id)

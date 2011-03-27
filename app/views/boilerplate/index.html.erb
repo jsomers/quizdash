@@ -22,8 +22,8 @@
 		</div>
 		<div class="machine">
 			questions&nbsp;&nbsp;<span><%= quiz.questions.length %></span><br>
-			avg score&nbsp;&nbsp;<span><%= number_to_percentage(quiz.avg_score * 100, :precision => 2) %></span><br>
-			fastest&nbsp;&nbsp;&nbsp;&nbsp;<span>3:04.07s [5:00]</span>
+			avg score&nbsp;&nbsp;<span><%= (quiz.avg_score ? number_to_percentage(quiz.avg_score * 100, :precision => 2) : "--") %></span><br>
+			fastest&nbsp;&nbsp;&nbsp;&nbsp;<span><%= pretty_time(quiz.fastest_time || quiz.time_limit * 60) %> <span style="color: #888">(<%= quiz.time_limit %>:00)</span></span>
 		</div>
 	</div>
 	<% end %>

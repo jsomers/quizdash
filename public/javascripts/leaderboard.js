@@ -110,6 +110,13 @@ leaderboard = {
     	var old = this.current();
 
     	$("#repo_listing").empty();
+    	
+    	$("#player-count").html(leaderboard.length);
+    	if (leaderboard.length == 1) {
+    	    $("#player-count-s").hide();
+    	} else {
+    	    $("#player-count-s").show();
+	    };
         
     	for (var i = 0; i < leaderboard.length; i++) {
     	    var pos = leaderboard[i],

@@ -207,6 +207,10 @@
 				}
 			})
 		}
-		
+	});
+	
+	//if we can, notify the server that we're going away.
+	$(window).unload(function () {
+	  $.ajax({url: "/dashes/leave", data: {dash_id: dash_hash, handle: QUIZ.nick}, async: false});
 	});
 </script>

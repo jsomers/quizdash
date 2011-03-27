@@ -21,6 +21,7 @@ class Dash < ActiveRecord::Base
     q = Quiz.find(self.quiz_id)
     q.play_count += 1
     q.update_avg_score
+    q.last_played = DateTime.now
     best_dash_length_in_seconds = self.players.collect {|p| if p[1] then Time.parse(p[1]) - self.started_at else q.time_limit * 60 end}.sort.first
     if q.fastest_time.nil? or best_dash_length_in_seconds < q.fastest_time
       q.fastest_time = best_dash_length_in_seconds
