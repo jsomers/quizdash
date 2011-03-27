@@ -1,5 +1,9 @@
 ### /play/quiz TODOs ###
 
+Redis dash handling -- how to deal with blanks, back buttons, and lingering objects
+
+How to deal with people coming in in the middle of a game? Spin off a new game? How to wait?
+
 Deploy
 	Have to start redis server
 		cd /usr/local/src/redis-2.2.2/src; ./redis-server 
@@ -30,7 +34,7 @@ More complex version of how timers could work
 	At that moment we fire a message to the server saying that the dash has started at this timestamp
 	Every time the dash is touched its "last-touch" timestamp changes
 	Let's examine the difference between ("last-touch" - "first-touch") and the regular Javascript clock
-	Synchronize if necessary
+	Synchronize if necessary -- sync to fastest time?
 	Just end the game either when your clock runs out or when someone else's has (and they've sent a "time's up" message)
 
 What's stored when you end a dash?

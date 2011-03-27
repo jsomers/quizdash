@@ -1380,7 +1380,7 @@ ul.repo-stats li.forks.forked a {
 #dashboard {
     margin-top: -10px;
     overflow: hidden;
-    min-height: 750px;
+    min-height: 450px;
 }
 #dashboard h1 {
     font-size: 160%;
