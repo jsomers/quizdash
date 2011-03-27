@@ -29,9 +29,8 @@ class DashesController < ApplicationController
   end
   
   def mark_q
-    d = Dash.find(params[:dash_id])
-    d.mark_q(params[:quiz_id], params[:plyr], params[:qid])
-    Juggernaut.publish("/#{params[:dash_id]}", d.to_json)
+    d = mark_question(params[:dash_id], params[:quiz_id], params[:plyr], params[:qid])
+    Juggernaut.publish("/#{params[:dash_id]}", d)
     render :text => "OK"
   end
   
@@ -62,6 +61,19 @@ class DashesController < ApplicationController
     obj = JSON.parse($redis.get id)
     obj["started_at"] = "true"
     $redis.set id, obj.to_json
+    return obj.to_json
+  end
+  
+  def mark_question(dash_id, quiz_id, handle, question_id)
+    # Takes the leaderboard, finds the player specified by the given handle, and
+    # uses the quiz & question_id to find and mark the appropriate question.
+    quiz, question = Quiz.find(quiz_id), Question.find(question_id)
+    i = quiz.questions.index(question)
+    obj = JSON.parse($redis.get dash_id)
+    board = obj["board"]
+    board.select {|entry| entry.first == handle}[0].last[i] = 1
+    obj["board"] = board.sort {|a, b| b[1].count(1) <=> a[1].count(1)}
+    $redis.set dash_id, obj.to_json
     return obj.to_json
   end
 end
