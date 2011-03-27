@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327004617) do
+ActiveRecord::Schema.define(:version => 20110327035345) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20110327004617) do
   create_table "categories_quizzes", :id => false, :force => true do |t|
     t.integer "category_id"
     t.integer "quiz_id"
+  end
+
+  create_table "dashes", :force => true do |t|
+    t.text     "board"
+    t.text     "players"
+    t.integer  "quiz_id"
+    t.datetime "started_at"
+    t.float    "avg_score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "questions", :force => true do |t|

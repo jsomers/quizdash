@@ -8,6 +8,7 @@ gem 'rails', '3.0.0.rc2'
 gem 'mysql'
 gem 'juggernaut'
 gem 'redis'
+gem 'ruby-debug19'
 
 # Use unicorn as the web server
 # gem 'unicorn'

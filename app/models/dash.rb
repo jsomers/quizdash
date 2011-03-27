@@ -1,47 +1,30 @@
-class Dash
-  attr_accessor :id, :board
+class Dash < ActiveRecord::Base
+  belongs_to :quiz
   
-  def initialize(id, quiz_id=nil, players=nil, ready=nil, board=nil)
-    @id = id
-    @board = (board ? board : [])
-    @quiz_id = quiz_id
-    @players = (players ? players : [])
-    @ready = (ready ? ready : [])
-    $redis.set self.id, {"board" => @board.to_json, "quiz_id" => @quiz_id, "players" => @players.to_json, "ready" => @ready.to_json}
+  serialize :board
+  serialize :players
+  
+  before_save :calculate_avg_score
+  
+  after_save :update_quiz_metadata
+  
+  def calculate_avg_score
+    s = 0
+    self.board.each do |b|
+      pointices = b[1]
+      s += pointices.count(1) / pointices.length.to_f
+    end
+    self.avg_score = s / self.board.length
   end
   
-  def sort_board
-    self.board = self.board.sort {|a, b| b[1].count(1) <=> a[1].count(1)}
-  end
-  
-  def save(board)
-    obj = $redis.get self.id
-    self.board = board
-    self.sort_board
-    obj["board"] = board.to_json
-    $redis.set self.id, obj
-    self
-  end
-  
-  def activate_player(player)
-    obj = $redis.get self.id
-    self.ready << player
-    obj["ready"] = self.ready
-    $redis.set self.id, obj
-  end
-  
-  def mark_q(quiz_id, handle, question_id)
-    # Takes the leaderboard, finds the player specified by the given handle, and
-    # uses the quiz & question_id to find and mark the appropriate question.
-    quiz, question = Quiz.find(quiz_id), Question.find(question_id)
-    i = quiz.questions.index(question)
-    board = self.board
-    board.select {|entry| entry.first == handle}[0].last[i] = 1
-    self.save(board)
-  end
-  
-  def self.find(id)
-    c = $redis.get(id)
-    (c ? Dash.new(id, c["quiz_id"], c["players"], c["ready"], c["board"]) : nil)
+  def update_quiz_metadata
+    q = Quiz.find(self.quiz_id)
+    q.play_count += 1
+    q.update_avg_score
+    best_dash_length_in_seconds = self.players.collect {|p| if p[1] then Time.parse(p[1]) - self.started_at else q.time_limit * 60 end}.sort.first
+    if q.fastest_time.nil? or best_dash_length_in_seconds < q.fastest_time
+      q.fastest_time = best_dash_length_in_seconds
+    end
+    q.save(false)
   end
 end

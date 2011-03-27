@@ -34,6 +34,18 @@ class DashesController < ApplicationController
     render :text => "OK"
   end
   
+  def im_done
+    mark_finished(params[:dash_id], params[:plyr])
+    render :text => "OK"
+  end
+  
+  def end_dash
+    if $redis.get params[:dash_id]
+      store_and_delete_dash(params[:dash_id])
+    end
+    render :text => "OK"
+  end
+  
   private
   
   def new_dash(id, quiz_id)
@@ -45,7 +57,7 @@ class DashesController < ApplicationController
   def add_slot_to_dash(id, slot)
     obj = JSON.parse($redis.get id)
     if !obj["board"].include? slot then obj["board"] << slot end
-    if !obj["players"].include? slot[0] then obj["players"] << slot[0] end
+    if !obj["players"].include? [slot[0], nil] then obj["players"] << [slot[0], nil] end
     $redis.set id, obj.to_json
     return obj.to_json
   end
@@ -59,7 +71,7 @@ class DashesController < ApplicationController
   
   def start_dash(id)
     obj = JSON.parse($redis.get id)
-    obj["started_at"] = "true"
+    obj["started_at"] = DateTime.now + 14.seconds
     $redis.set id, obj.to_json
     return obj.to_json
   end
@@ -75,5 +87,23 @@ class DashesController < ApplicationController
     obj["board"] = board.sort {|a, b| b[1].count(1) <=> a[1].count(1)}
     $redis.set dash_id, obj.to_json
     return obj.to_json
+  end
+  
+  def mark_finished(id, handle)
+    obj = JSON.parse($redis.get id)
+    players = obj["players"]
+    obj["players"] = obj["players"].collect {|pl| if pl[0] == handle then [pl[0], DateTime.now] else pl end}
+    $redis.set id, obj.to_json
+    return obj.to_json
+  end
+  
+  def store_and_delete_dash(id)
+    obj = JSON.parse($redis.get id)
+    d = Dash.new(:quiz_id => obj["quiz_id"], :board => obj["board"], :players => obj["players"], :started_at => obj["started_at"])
+    if d.save
+      $redis.del id
+    else
+      raise
+    end
   end
 end

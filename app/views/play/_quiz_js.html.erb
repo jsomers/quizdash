@@ -66,6 +66,12 @@
 	    		QUIZ.mark_correct(qid, ans);
 	    		$("#answer").val("");
 	    		seen[qid] = true;
+				var cur = leaderboard.current()[QUIZ.nick].pointices;
+				if (cur.sum() == (cur.length - 1)) {
+					$.post("/dashes/im_done", {dash_id: dash_hash, plyr: QUIZ.nick}, function(ret) {console.log(ret)});
+					$(".start-button").html("Done!").show();
+					$("#answer").attr("disabled", true);
+				}
 	    		$.post("/dashes/mark_q/",
 	    		    {dash_id: dash_hash, quiz_id: quiz_id, qid: qid, plyr: QUIZ.nick},
 	    		    function(ret) {
@@ -171,6 +177,9 @@
 			$(".news").css("position", "static");
 			$(".news").css("opacity", 1);
 			$("#your_repos").css("float", "right");
+			$("li.diffstat").css("background", "none");
+			$("li.diffstat.me").css("background", "#ffff99");
+			$(".start-button").hide();
 			var page_size = ___getPageSize();
 			$("#overlay").css("width", page_size[0]).css("height", page_size[1]).show();
 			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
@@ -184,6 +193,11 @@
 			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
 			var your_place = leaderboard.ordinal(leaderboard.current()[QUIZ.nick].place + 1);
 			$("#countdown_clock span").html(your_place);
+			$.post("/dashes/end_dash", {dash_id: dash_hash, quiz_id: quiz_id}, 
+				function(ret) {
+					console.log(ret);
+				}
+			)
 		}
 		
 		readify = function(player) {

@@ -30,6 +30,7 @@ GEM
     activesupport (3.0.0.rc2)
     amazon-ec2 (0.9.17)
       xml-simple (>= 1.0.12)
+    archive-tar-minitar (0.5.2)
     arel (1.0.0)
       activesupport (>= 3.0.0.beta)
     aws-s3 (0.6.2)
@@ -40,14 +41,15 @@ GEM
     capistrano (2.5.20)
       highline
       highline
-      net-scp (>= 1.0.0)
       net-scp
+      net-scp (>= 1.0.0)
       net-sftp
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh
       net-ssh-gateway
       net-ssh-gateway (>= 1.0.0)
+    columnize (0.3.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     highline (1.6.1)
@@ -55,6 +57,8 @@ GEM
     i18n (0.4.2)
     juggernaut (2.0.1)
       redis
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -99,6 +103,16 @@ GEM
       aws-s3
       capistrano (>= 2.4.0)
       nettica
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -114,3 +128,4 @@ DEPENDENCIES
   rails (= 3.0.0.rc2)
   redis
   rubber (= 1.11.0)
+  ruby-debug19

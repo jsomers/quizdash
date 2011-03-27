@@ -1,6 +1,7 @@
 class Quiz < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_and_belongs_to_many :categories
+  has_many :dashes
   
   accepts_nested_attributes_for :questions, :allow_destroy => true
   
@@ -29,5 +30,11 @@ class Quiz < ActiveRecord::Base
   
   def url
     "#{self.id}-#{self.title.downcase.gsub(/[^a-z0-9]/, '-').gsub('--', '-')}"
+  end
+  
+  def update_avg_score
+    n = 0
+    self.dashes.each {|d| n += d.avg_score} 
+    self.avg_score = n / self.dashes.length.to_f
   end
 end
