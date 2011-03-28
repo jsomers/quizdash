@@ -16,7 +16,7 @@ class Quiz < ActiveRecord::Base
     # Creates object like {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}.
     map = {}
     self.questions.each_with_index do |q|
-      q.permissible_answers.each {|pa| map[pa] = q.id}
+      q.permissible_answers.each {|pa| map[pa.downcase] = q.id}
     end
     return map
   end

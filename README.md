@@ -25,7 +25,9 @@ Scale the question indicators so that, say, four of them would take up as much s
 
 CSV upload interface and backend code.
 
-Quick thing: store the quiz_id on the dash object?
+Stats of individual questions answered
+
+Put question IDs in the mix so that we know which questions were answered.
 
 More complex version of how timers could work
 	At a certain point the server should fire off a "start countdown" event to the clients in the channel (do this manually for now)
