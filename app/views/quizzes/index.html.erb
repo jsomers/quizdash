@@ -13,11 +13,11 @@
 				<%= truncate(quiz.description, :length => 233) %>
 			</div>
 			<div class="date">
- 					<abbr class="relatize relatized">played <%= pluralize(quiz.play_count, "time") %>&mdash;last played <%= begin time_ago_in_words(quiz.last_played) rescue "eons" end %> ago</abbr>
+ 					<abbr class="relatize relatized">last played <%= begin time_ago_in_words(quiz.last_played) rescue "eons" end %> ago</abbr>
 			</div>
 		</div>
 		<div class="machine">
-			questions&nbsp;&nbsp;<span><%= quiz.questions.length %></span><br>
+			played&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><%= pluralize(quiz.play_count, "time") %></span>
 			avg score&nbsp;&nbsp;<span><%= (quiz.avg_score ? number_to_percentage(quiz.avg_score * 100, :precision => 2) : "--") %></span><br>
 			fastest&nbsp;&nbsp;&nbsp;&nbsp;<span><%= pretty_time(quiz.fastest_time || quiz.time_limit * 60) %> <span style="color: #888">(<%= quiz.time_limit %>:00)</span></span>
 		</div>
@@ -33,7 +33,7 @@
 			if (confirmed) {
 				$.post("/quizzes/destroy", {id: qid},
 					function(ret) {
-						if (ret == "OK") $(".quiz_list[qid=" + qid + "]").remove();
+						if (ret == "OK") $(".envelope[quiz_id=" + qid + "]").remove();
 				})
 			}
 			return false;

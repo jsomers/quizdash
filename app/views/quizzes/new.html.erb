@@ -2,7 +2,7 @@
 	Create a new quiz: <em></em>
 <% end %>
 
-<%= form_for @quiz do |f| %>
+<%= form_for @quiz, :html => {:multipart => true} do |f| %>
 	<dl class="form">
 		<dt><%= f.label :title %></dt>
 		<dd><%= f.text_field :title, {:placeholder => "\"U.S. Capitals,\" e.g."} %></dd>
@@ -48,7 +48,7 @@
 		
 	</div>
 	
-	<a href="#" id="add_question">+ Add a question</a><br>
+	<a href="#" id="add_question">Add a question</a> or <a href="#" id="csv_add">attach a CSV file</a> <span id="file_field" style="display: none;"><%= file_field "csv", "file" %></span><br>
 	
 	<br>
 	<div class="form-actions">

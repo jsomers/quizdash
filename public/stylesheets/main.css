@@ -1578,6 +1578,12 @@ dl.questions {
     margin-left: 10px;
     font-size: 12px;
 }
+#csv_add {
+    font-size: 12px;
+}
+form#new_quiz,form.edit_quiz {
+    margin-left: 180px;
+}
 input.next {
     margin-top: 0px;
 }

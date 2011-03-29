@@ -63,7 +63,7 @@ class DashesController < ApplicationController
   private
   
   def new_dash(id, quiz_id)
-    obj = {"quiz_id" => quiz_id, "board" => [], "players" => [], "ready" => []}.to_json
+    obj = {"quiz_id" => quiz_id, "board" => [], "players" => [], "ready" => [], "questions" => Quiz.find(quiz_id).random_questions(10)}.to_json
     $redis.set id, obj
     return obj
   end
@@ -94,8 +94,8 @@ class DashesController < ApplicationController
     # Takes the leaderboard, finds the player specified by the given handle, and
     # uses the quiz & question_id to find and mark the appropriate question.
     quiz, question = Quiz.find(quiz_id), Question.find(question_id)
-    i = quiz.questions.index(question)
     obj = JSON.parse($redis.get dash_id)
+    i = obj["questions"].collect {|o| o["question"]["id"]}.sort.index(question.id)
     board = obj["board"]
     board.select {|entry| entry.first == handle}[0].last[i] = 1
     obj["board"] = board.sort {|a, b| b[1].count(1) <=> a[1].count(1)}

@@ -13,7 +13,8 @@ class QuizzesController < ApplicationController
   end
   
   def create
-    @quiz = Quiz.new(params[:quiz])
+    processed_params = (params[:csv] ? Quiz.attach_csv_questions(params[:quiz], params[:csv][:file]) : params[:quiz])
+    @quiz = Quiz.new(processed_params)
     if @quiz.save
       redirect_to :action => :index
     else
@@ -27,7 +28,8 @@ class QuizzesController < ApplicationController
   
   def update
     @quiz = Quiz.find(params[:id])
-    @quiz.attributes = params[:quiz]
+    processed_params = (params[:csv] ? Quiz.attach_csv_questions(params[:quiz], params[:csv][:file]) : params[:quiz])
+    @quiz.attributes = processed_params
     if @quiz.save
       redirect_to :action => :index
     else

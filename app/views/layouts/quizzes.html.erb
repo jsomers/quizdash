@@ -34,6 +34,12 @@
 				$(this).parent().remove();
 				return false;
 			});
+			
+			$("#csv_add").click(function() {
+				$(this).hide();
+				$("#file_field").show();
+				return false;
+			})
 	
 			// We can't just hide these. We need to insert a hidden input that tells the server
 			// to delete the question.

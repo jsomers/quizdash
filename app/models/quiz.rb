@@ -4,28 +4,37 @@ class Quiz < ActiveRecord::Base
   has_many :dashes
   
   accepts_nested_attributes_for :questions, :allow_destroy => true
-  
-  validates_inclusion_of :time_limit, :in => 1..15
-  validates_presence_of :title
 
-  def self.popular(threshold=0)
+  validates_presence_of :title
+  
+  before_save :prune_empty_questions, :validate_number_of_questions
+
+  def self.popular(threshold=-1)
     Quiz.where(["play_count > ?", threshold]).order("play_count DESC")
   end
   
-  def answer_map(offset=nil)
-    # Creates object like {"warmth": 1, "climax": 2, "indigo": 3, "liquor": 4}.
-    map = {}
-    self.questions.each_with_index do |q|
-      q.permissible_answers.each {|pa| map[pa.downcase] = q.id}
-    end
-    return map
+  def prune_empty_questions
+    self.questions = self.questions.reject {|q| q.prompt.empty?}
   end
   
-  def add_questions_from_file(file)
-    require 'csv'
-    CSV.parse(file.read).each do |row|
-      self.questions.create(:prompt => row[0], :permissible_answers => row[1..-1])
+  def validate_number_of_questions
+    if self.questions.length < 10
+      self.errors.add_to_base("Must have at least 10 questions")
     end
+  end
+  
+  def random_questions(n)
+    self.questions.sort_by { rand }.first(n).sort {|a, b| a.id <=> b.id}
+  end
+  
+  def self.attach_csv_questions(params, file)
+    require 'csv'
+    i = params[:questions_attributes].keys.collect {|k| k.to_i}.max
+    CSV.parse(file.read).each do |row|
+      i += 1
+      params[:questions_attributes][i.to_s] = {"prompt" => row[0], "permissible_answers" => row[1..-1].join(",")}
+    end
+    return params
   end
   
   def url

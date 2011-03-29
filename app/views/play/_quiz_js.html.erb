@@ -18,8 +18,8 @@
 		quiz_id = "<%= @quiz.id %>";
 		time_limit = <%= @quiz.time_limit %>;
 		
-		answers = <%= raw(@quiz.answer_map.to_json) %>;
-		n_questions = <%= @quiz.questions.length %>;
+		answers = {};
+		n_questions = 10;
 		seen = {}; // TODO: This should probably be in QUIZ object, as should answers.
 		
 		jug = new Juggernaut;
@@ -28,6 +28,9 @@
 				function(ret) {
 					dash = JSON.parse(ret);
 					//leaderboard.new(dash.board);
+					
+					if (Object.keys(answers).length == 0)
+						populate_questions(dash.questions);
 
 					QUIZ.nick = prompt("Enter your handle, please", "zero_cool");
 					//CONFIG.nick = "player " + Math.floor(Math.random() * 101);
@@ -61,9 +64,10 @@
 		
 		$("#answer").keyup(function() {
 	    	var ans = $("#answer").val().toLowerCase();
-	    	var qid = answers[ans];
+			if (typeof(answers[ans]) != "undefined")
+	    		var qid = answers[ans][0];
 	    	if (typeof(qid) != "undefined" && typeof(seen[qid]) == "undefined") {
-	    		QUIZ.mark_correct(qid, ans);
+	    		QUIZ.mark_correct(qid, answers[ans][1]);
 	    		$("#answer").val("");
 	    		seen[qid] = true;
 				var cur = leaderboard.current()[QUIZ.nick].pointices;
@@ -206,6 +210,33 @@
 					$(e).css("background", "#ddffdd");
 				}
 			})
+		};
+		
+		make_answer_map = function(questions) {
+			for (var i = 0; i < questions.length; i++) {
+				var q = questions[i].question;
+				for (j = 0; j < q.permissible_answers.length; j++) {
+					var pa = q.permissible_answers[j];
+					answers[pa.toLowerCase()] = [q.id, pa];
+				}
+			}
+		}
+		
+		populate_questions = function(questions) {
+			for (var i = 0; i < questions.length; i++) {
+				var q = questions[i].question;
+				var li = $("#question_template").clone();
+				$(li).attr("id", null).attr("qid", q.id);
+				$(li).addClass("simple");
+				$(li).find("h3.hint").html(q.prompt);
+				if (i < 5) {
+					$(li).appendTo($("div.lefterly ul.repositories"));
+				} else {
+					$(li).appendTo($("div.righterly ul.repositories"));
+				}
+				$(li).show();
+			};
+			make_answer_map(questions);
 		}
 	});
 	

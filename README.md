@@ -1,5 +1,21 @@
 ### /play/quiz TODOs ###
 
+Quizzes should be buckets of questions, 10 in each round!
+
+Timer fritzing?
+
+Change time limits -- shorter
+
+Do nothing when you hit enter in the game area
+
+Require at least ten questions
+
+How many people are waiting for a given game?
+
+Give hints (like fill in letters) if people aren't performing well
+
+Show more stats to people who finish early
+
 Redis dash handling -- how to deal with blanks, back buttons, and lingering objects
 
 How to deal with people coming in in the middle of a game? Spin off a new game? How to wait?
@@ -22,8 +38,6 @@ Matchmaking and rooms (first cut)
 	
 Scale the question indicators so that, say, four of them would take up as much space as fifteen (they'd just be wider).
 	Also scale the input boxes
-
-CSV upload interface and backend code.
 
 Stats of individual questions answered
 

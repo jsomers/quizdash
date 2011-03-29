@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327035345) do
+ActiveRecord::Schema.define(:version => 20110329050506) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20110327035345) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "time_limit"
-    t.integer  "play_count"
+    t.integer  "play_count",   :default => 0
     t.float    "avg_score"
     t.float    "fastest_time"
     t.datetime "last_played"
