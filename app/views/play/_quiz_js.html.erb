@@ -60,9 +60,13 @@
 						break;
 				}
 			}
+		});
+		
+		$("form").submit(function() {
+			return false;
 		})
 		
-		$("#answer").keyup(function() {
+		$("#answer").keyup(function(e) {
 	    	var ans = $("#answer").val().toLowerCase();
 			if (typeof(answers[ans]) != "undefined")
 	    		var qid = answers[ans][0];

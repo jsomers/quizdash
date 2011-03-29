@@ -1,7 +1,5 @@
 ### /play/quiz TODOs ###
 
-Quizzes should be buckets of questions, 10 in each round!
-
 Timer fritzing?
 
 Change time limits -- shorter
