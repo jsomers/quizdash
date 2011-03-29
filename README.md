@@ -1,5 +1,26 @@
 ### /play/quiz TODOs ###
 
+Simplify structure:
+	/initiate -> /boilerplate/set_handle
+		- choose a handle w/ ajax validation
+		- adds that plus 90834902839238 id to session
+	/quiz/wait -> /play/wait
+		- go to waiting room if (a) game in progress and (b) you're not "on the list," according to a hash
+		- if you're in the room when the countdown starts, you're on the list
+		- you can be on the list without being *in* the game
+		- nothing that happens in this room should affect the current dash object
+	/quiz/dash -> /play/quiz
+		- no need to hide leaderboard and such
+		- once the game starts, no new people can enter
+
+Clean up code:
+	- quiz_js.html.erb needs real work; objectify the js using leaderboard.js as a model
+	- $redis API could be cleaner; re-use functions
+	- name things so that they're easy to find, the js for quiz crud being a prime example
+	- rename things to get away from github's labels
+
+With only 10 questions per game, scale indicators appropriately
+
 Timer fritzing?
 
 Change time limits -- shorter
