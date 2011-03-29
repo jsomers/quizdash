@@ -4,10 +4,6 @@ Timer fritzing?
 
 Change time limits -- shorter
 
-Do nothing when you hit enter in the game area
-
-Require at least ten questions
-
 How many people are waiting for a given game?
 
 Give hints (like fill in letters) if people aren't performing well
