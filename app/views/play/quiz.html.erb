@@ -7,7 +7,7 @@
 <% end %>
 
 <% content_for :sub_h1 do %>
-	<div style="height: 30px; text-align: center; color: #99A7AF; font-size: 16px;">You will have <%= pluralize(@quiz.time_limit, "minute") %> to fill in <%= pluralize(@quiz.questions.length, "blank") %></div>
+	<div style="height: 30px; text-align: center; color: #99A7AF; font-size: 16px;"><%= truncate(@quiz.description, :length => 250) %></div>
 <% end %>
 
 <% content_for :top_right do %>
@@ -18,10 +18,6 @@
 
 <div class="news" style="opacity: 0; position: absolute;">
 	<%= render "play/game_area" %>
-</div>
-
-<div id="quiz_description">
-	<%= @quiz.description %>
 </div>
 
 <%= render "play/leaderboard" %>
