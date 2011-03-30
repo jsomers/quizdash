@@ -1,5 +1,7 @@
 ### /play/quiz TODOs ###
 
+Canonical quiz answers
+
 Simplify structure:
 	/initiate -> /boilerplate/set_handle
 		- choose a handle w/ ajax validation
@@ -12,6 +14,7 @@ Simplify structure:
 	/quiz/dash -> /play/quiz
 		- no need to hide leaderboard and such
 		- once the game starts, no new people can enter
+		- what happens to the people who have just finished a dash and want to play it again?
 
 Clean up code:
 	- quiz_js.html.erb needs real work; objectify the js using leaderboard.js as a model

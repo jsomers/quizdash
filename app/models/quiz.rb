@@ -32,7 +32,7 @@ class Quiz < ActiveRecord::Base
     i = params[:questions_attributes].keys.collect {|k| k.to_i}.max
     CSV.parse(file.read).each do |row|
       i += 1
-      params[:questions_attributes][i.to_s] = {"prompt" => row[0], "permissible_answers" => row[1..-1].join(",")}
+      params[:questions_attributes][i.to_s] = {"prompt" => row[0], "permissible_answers" => row[1..-1].compact.join("|")}
     end
     return params
   end

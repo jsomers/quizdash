@@ -37,9 +37,9 @@
 					</dd>
 				<dd class="half rt">
 					<%= question_form.text_field :permissible_answers, {
-						:placeholder => "Permissible answers, separated by commas.", 
+						:placeholder => "Permissible answers, separated by pipe | characters.", 
 						:class => "permissibles", 
-						:value => question_form.object.permissible_answers.join(", ")
+						:value => question_form.object.permissible_answers.join("| ")
 					  } %>
 				</dd>
 				<a href="#" class="remove_existing_question" style="float: left;" tabindex="-1">(rm)</a>

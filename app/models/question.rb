@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
   
   def listify_permissibles
     if self.permissible_answers.is_a? String
-      self.permissible_answers = self.permissible_answers.split(",").collect {|pa| pa.strip}
+      self.permissible_answers = self.permissible_answers.split("|").collect {|pa| pa.strip}
     end
   end
 end
