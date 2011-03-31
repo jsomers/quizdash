@@ -1,7 +1,5 @@
 ### /play/quiz TODOs ###
 
-Canonical quiz answers
-
 Simplify structure:
 	/initiate -> /boilerplate/set_handle
 		- choose a handle w/ ajax validation
@@ -15,18 +13,23 @@ Simplify structure:
 		- no need to hide leaderboard and such
 		- once the game starts, no new people can enter
 		- what happens to the people who have just finished a dash and want to play it again?
+		
+Show game status (how many waiting, etc.) on quiz partials
 
 Clean up code:
 	- quiz_js.html.erb needs real work; objectify the js using leaderboard.js as a model
 	- $redis API could be cleaner; re-use functions
 	- name things so that they're easy to find, the js for quiz crud being a prime example
+	- index.html for boilerplate and quizzes
 	- rename things to get away from github's labels
+	
+Same answers for multiple questions should work
 
 With only 10 questions per game, scale indicators appropriately
 
-Timer fritzing?
+Count how many times a player has played a game, with an eye toward pushing people who know it really well to other games.
 
-Change time limits -- shorter
+Timer fritzing?
 
 How many people are waiting for a given game?
 

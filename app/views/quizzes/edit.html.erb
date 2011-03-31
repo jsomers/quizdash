@@ -9,11 +9,12 @@
 	</dl><br>
 	
 	<dl class="form">
-		<dt><%= f.label :time_limit, "Time limit" %> 
+		<dt><%= f.label :time_limit, "Time limit" %></dt>
+		<dd style="margin: 3px 0 0 10px;">
 			<span style="font-weight: normal">
-				of <%= select(:quiz, :time_limit, (1..15).collect {|i| ["#{i}:00", i]}) %> minute<span id="minute-s">s</span>
+				<%= select(:quiz, :time_limit, [["00:15", 15], ["00:30", 30], ["00:45", 45]] + (1..3).collect {|i| ["#{i}:00", i * 60]}) %>
 			</span>
-		</dt>
+		</dd>
 	</dl><br>
 	
 	<dl class="form">

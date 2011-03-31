@@ -155,8 +155,10 @@
 			$(selector).html( pretty_time(m, s, i) );
 		};
 		
-		start_dash_clock = function(minutes) {
-			tick(".clock span", minutes, 0);
+		start_dash_clock = function(seconds) {
+			var minutes = Math.floor(seconds / 60);
+			seconds = seconds % 60;
+			tick(".clock span", minutes, seconds);
 		};
 
 		initiate_dash = function() {
@@ -190,7 +192,7 @@
 			var page_size = ___getPageSize();
 			$("#overlay").css("width", page_size[0]).css("height", page_size[1]).show();
 			$("#countdown_container").css("left", (page_size[0] / 2) - 100 + "px").show();
-			countdown(9);
+			countdown(5);
 		};
 		
 		end_dash = function() {
@@ -220,7 +222,7 @@
 				var q = questions[i].question;
 				for (j = 0; j < q.permissible_answers.length; j++) {
 					var pa = q.permissible_answers[j];
-					answers[pa.toLowerCase()] = [q.id, pa];
+					answers[pa.toLowerCase()] = [q.id, q.permissible_answers[0]];
 				}
 			}
 		}
