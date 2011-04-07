@@ -1,9 +1,14 @@
 ### /play/quiz TODOs ###
 
-Simplify structure:
+Robustify structure:
 	/initiate -> /boilerplate/set_handle
 		- choose a handle w/ ajax validation
 		- adds that plus 90834902839238 id to session
+	/assign/:id
+		- finds a waiting room for the given game
+		- (go here if no particular waiting room is specified)
+		- go to the most popular waiting room
+		- if no waiting rooms are available, create one, and add it to the object that maps game ids to available waiting rooms
 	/quiz/wait -> /play/wait
 		- go to waiting room if (a) game in progress and (b) you're not "on the list," according to a hash
 		- if you're in the room when the countdown starts, you're on the list
@@ -13,6 +18,10 @@ Simplify structure:
 		- no need to hide leaderboard and such
 		- once the game starts, no new people can enter
 		- what happens to the people who have just finished a dash and want to play it again?
+	think more carefully about the dash object
+		- multiple independent waiting rooms, each with its own dash object that becomes a game with a list
+		- when the players are ready or the waiting room fills up everyone is redirected to the play url
+		- if you're not on the list and you try to go to the play url, you're bumped into the waiting area
 		
 Show game status (how many waiting, etc.) on quiz partials
 

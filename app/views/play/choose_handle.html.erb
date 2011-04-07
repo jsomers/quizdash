@@ -1,0 +1,26 @@
+<% content_for :h1 do %>
+	Choose a handle before you play!
+<% end %>
+
+<% content_for :sub_h1 do %>
+	Please use only letters, numbers, dashes, and underscores.
+<% end %>
+
+<form action="/play/set_handle">
+	<dl class="form">
+		<dd style="text-align: center; margin-top: 120px;">
+			<input type="text" name="handle" id="handle" style="font-size: 150%; font-weight: bold; text-align: center; color: black; width: 255px;"/> <span id="msg" style="font-size: 110%; margin-left: 5px; display: none;"></span>
+		</dd>
+	</dl>
+	<div class="button-container" style="text-align: center; margin-top: 10px;">
+		<button type="submit" class="classy" style="margin:0 auto;">
+			<span>Register handle</span>
+		</button>
+	</div>
+</form>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#handle").focus();
+	})
+</script>

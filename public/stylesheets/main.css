@@ -41,6 +41,10 @@ p {
 img {
     border: 0;
 }
+h1 {
+    text-align: center;
+    font-size: 24px;
+}
 abbr {
     border-bottom: none;
 }
@@ -1732,4 +1736,11 @@ input.next {
 }
 #commit .commit_oneline .tree {
     border-right: 1px solid #BEDCE7;
+}
+
+.sub_h1 {
+    height: 30px;
+    text-align: center;
+    color: #99A7AF;
+    font-size: 16px;
 }

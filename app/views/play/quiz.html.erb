@@ -3,11 +3,11 @@
 <% end %>
 
 <% content_for :h1 do %>
-	<div style="text-align: center; font-size: 24px;"><%= @quiz.title %></div>
+	<%= @quiz.title %>
 <% end %>
 
 <% content_for :sub_h1 do %>
-	<div style="height: 30px; text-align: center; color: #99A7AF; font-size: 16px;"><%= truncate(@quiz.description, :length => 250) %></div>
+	<%= truncate(@quiz.description, :length => 250) %>
 <% end %>
 
 <% content_for :top_right do %>
