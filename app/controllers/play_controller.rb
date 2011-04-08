@@ -13,7 +13,7 @@ class PlayController < ApplicationController
   def choose_handle
     if session[:handle]
       handles = rget("handles")
-      handles = handles.delete(session[:handle])
+      handles.delete(session[:handle])
       rset("handles", handles)
       session[:handle] = nil
     end
@@ -23,6 +23,7 @@ class PlayController < ApplicationController
     handle = clean(params[:handle])
     if not_taken(handle)
       session[:handle] = handle
+      register(handle)
       flash[:notice] = "Now you're playing as <strong>#{handle}</strong>"
       redirect_to_x_or_default "/"
     else
@@ -40,5 +41,11 @@ class PlayController < ApplicationController
   
   def clean(handle)
     handle.strip.gsub(/[^a-zA-Z0-9\-\_]/, "-").gsub("--", "-")
+  end
+  
+  def register(handle)
+    handles = rget("handles")
+    handles[handle] = rand(10_000_000_000)
+    rset("handles", handles)
   end
 end

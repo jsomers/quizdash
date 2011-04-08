@@ -1,26 +1,28 @@
 ### /play/quiz TODOs ###
 
+Add flash[:notice] and flash[:alert]
+
 Robustify structure:
 	/initiate -> /boilerplate/set_handle
 		- choose a handle w/ ajax validation
 		- adds that plus 90834902839238 id to session
-	/assign/:id
-		- finds a waiting room for the given game
-		- (go here if no particular waiting room is specified)
-		- go to the most popular waiting room
-		- if no waiting rooms are available, create one, and add it to the object that maps game ids to available waiting rooms
 	/quiz/wait -> /play/wait
-		- go to waiting room if (a) game in progress and (b) you're not "on the list," according to a hash
+		- there is always one waiting room, and games spin off of it
+		- the index page shows the status of the waiting room for that quiz
 		- if you're in the room when the countdown starts, you're on the list
 		- you can be on the list without being *in* the game
 		- nothing that happens in this room should affect the current dash object
+		- the urls that people can share with friends include their id, so that "groups" are automatically created
+		- should definitely be chat in here
 	/quiz/dash -> /play/quiz
 		- no need to hide leaderboard and such
-		- once the game starts, no new people can enter
+		- once the game starts, no new people can enter, and it's its own independent object
+		- if you disconnect from a game and then return, you can get in if you're on the list
 		- what happens to the people who have just finished a dash and want to play it again?
 	think more carefully about the dash object
-		- multiple independent waiting rooms, each with its own dash object that becomes a game with a list
-		- when the players are ready or the waiting room fills up everyone is redirected to the play url
+		- when the players are ready or the max wait time hits everyone who's opted in ("ready") is redirected to the play url
+		- others keep waiting while the waitroom timer restarts
+		- wait room is timed on the server
 		- if you're not on the list and you try to go to the play url, you're bumped into the waiting area
 		
 Show game status (how many waiting, etc.) on quiz partials
