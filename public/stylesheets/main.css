@@ -1744,3 +1744,21 @@ input.next {
     color: #99A7AF;
     font-size: 16px;
 }
+
+.choose-handle dd {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.choose-handle .button-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.choose-handle #handle {
+    font-size: 150%;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    width: 255px;
+}

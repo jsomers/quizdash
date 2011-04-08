@@ -20,9 +20,7 @@ class PlayController < ApplicationController
   end
   
   def set_handle
-    handle = clean(params[:handle])
-    if not_taken(handle)
-      session[:handle] = handle
+    if not_taken(handle = clean(params[:handle]))
       register(handle)
       flash[:notice] = "Now you're playing as <strong>#{handle}</strong>"
       redirect_to_x_or_default "/"
@@ -47,5 +45,6 @@ class PlayController < ApplicationController
     handles = rget("handles")
     handles[handle] = rand(10_000_000_000)
     rset("handles", handles)
+    session[:handle] = handle
   end
 end
